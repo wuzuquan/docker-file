@@ -1,0 +1,14 @@
+version: '2'
+services:
+  prometheus:
+    image: 11.4.76.193/redis/prometheus:v2.2.1
+    network_mode: host
+    volumes:
+      - /etc/prometheus
+
+  grafana-ui:
+    image: 11.4.76.193/redis/grafana:5.0.4
+    network_mode: host
+    environment:
+      - GF_SECURITY_ADMIN_PASSWORD=secret
+

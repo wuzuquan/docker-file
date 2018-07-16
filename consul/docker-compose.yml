@@ -1,0 +1,37 @@
+version: '2'
+
+volumes:
+  nfs-volume:
+    driver: rancher-nfs
+    per_container: true
+services:
+  consul-server1:
+    image: 11.4.76.193/library/consul-wzq:latest
+    ports:
+          - "8400:8400"
+          - "8500:8500"
+          - "8600:8600"
+    environment:
+          - "CONSUL_LOCAL_CONFIG={\"disable_update_check\": true}"
+    volumes:
+          - nfs-volume:/consul/data
+    command: "consul agent -server -ui -bootstrap-expect 3  -data-dir /consul/data -config-dir /consul/config -client 0.0.0.0"
+
+  consul-server2:
+    image: 11.4.76.193/library/consul-wzq:latest
+    ports:
+          - "8400:8400"
+          - "8500:8500"
+          - "8600:8600"
+    environment:
+          - "CONSUL_LOCAL_CONFIG={\"disable_update_check\": true}"
+    volumes:
+          - nfs-volume:/consul/data
+    command: "consul agent -server -ui -retry-join consul-server1  -data-dir /consul/data -config-dir /consul/config -client 0.0.0.0"
+
+  lb:
+    image: 11.4.76.186/rancher/lb-service-haproxy:v0.7.15
+    ports:
+     - 800:800/tcp
+   
+

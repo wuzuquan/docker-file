@@ -1,0 +1,7 @@
+version: '2'
+services:
+  redis-node:
+    retain_ip: true
+    scale: 6
+    start_on_create: true
+ 

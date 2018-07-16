@@ -1,0 +1,36 @@
+version: '2'
+services:
+  consul-server1:
+    retain_ip: true
+    scale: 1
+    start_on_create: true
+  consul-server2:
+    retain_ip: true
+    scale: 2
+    start_on_create: true
+  lb:
+    scale: 1
+    start_on_create: true
+    lb_config:
+      certs: []
+      port_rules:
+      - path: ''
+        priority: 1
+        protocol: http
+        service: consul-server1
+        source_port: 800
+        target_port: 8500
+      - hostname: ''
+        priority: 2
+        protocol: http
+        service: consul-server2
+        source_port: 800
+        target_port: 8500
+    health_check:
+      response_timeout: 2000
+      healthy_threshold: 2
+      port: 42
+      unhealthy_threshold: 3
+      initializing_timeout: 60000
+      interval: 2000
+      reinitializing_timeout: 60000

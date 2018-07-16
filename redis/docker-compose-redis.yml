@@ -1,0 +1,23 @@
+version: '2'
+
+volumes:
+  rbd:
+    driver: rancher-rbd
+    per_container: true
+    driver_opts:
+      pool: rbd
+      size: 30G
+services:
+  redis-node:
+    image: 11.4.76.193/redis/redis:4.0
+    stdin_open: true
+    network_mode: host
+    volumes:
+       - rbd:/redis/data
+  
+    tty: true
+    labels:
+      io.rancher.container.pull_image: always
+      io.rancher.scheduler.affinity:container_label_ne: app_label_to_host=redis_cluster_06645
+      app_label_to_host: redis_cluster_06645
+

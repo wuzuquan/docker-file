@@ -1,0 +1,87 @@
+
+version: '2'
+
+volumes:
+  nfs-volume:
+    driver: rancher-rbd
+    per_container: true
+    driver_opts:
+      pool: rbd
+      size: 30G
+  commitlog:
+      driver: rancher-rbd
+      per_container: true
+      driver_opts:
+        pool: rbd
+        size: 30G
+services:
+  namesrv1:
+    image: 11.4.76.193/redis/rocketmq-namesrv:4.2.0
+    volumes:
+      - nfs-volume:/rocketmq/store
+
+  namesrv2:
+    image: 11.4.76.193/redis/rocketmq-namesrv:4.2.0
+    volumes:
+      - nfs-volume:/rocketmq/store
+
+  broker-a:
+    image: 11.4.76.193/redis/rocketmq-broker:4.2.0
+    volumes:
+      - nfs-volume:/rocketmq/store
+      - commitlog:/rocketmq/commitlog
+    environment:
+      MEMORY: "-Xms4G -Xmx4G -Xmn2G"
+    depends_on:
+      - namesrv1
+      - namesrv2
+    labels:
+      io.rancher.container.pull_image: always
+    command: "sh bin/mqbroker -c ./conf/2m-2s-sync/broker-a.properties -n namesrv1:9876;namesrv2:9876"
+
+
+  broker-a-s:
+    image: 11.4.76.193/redis/rocketmq-broker:4.2.0
+    volumes:
+      - nfs-volume:/rocketmq/store
+      - commitlog:/rocketmq/commitlog
+    environment:
+      MEMORY: "-Xms4G -Xmx4G -Xmn2G"
+    depends_on:
+      - namesrv1
+      - namesrv2
+    command: "sh bin/mqbroker -c ./conf/2m-2s-sync/broker-a-s.properties -n namesrv1:9876;namesrv2:9876"
+    labels:
+      io.rancher.container.pull_image: always
+
+  broker-b:
+    image: 11.4.76.193/redis/rocketmq-broker:4.2.0
+
+    volumes:
+      - nfs-volume:/rocketmq/store
+      - commitlog:/rocketmq/commitlog
+    environment:
+      MEMORY: "-Xms4G -Xmx4G -Xmn2G"
+    depends_on:
+      - namesrv1
+      - namesrv2
+    command: "sh bin/mqbroker -c ./conf/2m-2s-sync/broker-b.properties -n namesrv1:9876;namesrv2:9876"
+    labels:
+      io.rancher.container.pull_image: always
+
+  broker-b-s:
+    image: 11.4.76.193/redis/rocketmq-broker:4.2.0
+
+    volumes:
+      - nfs-volume:/rocketmq/store
+      - commitlog:/rocketmq/commitlog
+    environment:
+      MEMORY: "-Xms4G -Xmx4G -Xmn2G"
+    depends_on:
+      - namesrv1
+      - namesrv2
+    command: "sh bin/mqbroker -c ./conf/2m-2s-sync/broker-b-s.properties -n namesrv1:9876;namesrv2:9876"
+    labels:
+      io.rancher.container.pull_image: always
+
+
