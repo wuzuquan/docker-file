@@ -5,7 +5,9 @@ RUN mkdir -p /consul/data && \
     mkdir -p /consul/config
 
 VOLUME /consul
-ADD consul /bin
+ADD consul /usr/bin
+WORKDIR /usr/bin
+run chmod 777 /usr/bin/consul
 
 EXPOSE 8300 53
 
@@ -18,4 +20,4 @@ EXPOSE 8301 8301/udp 8302 8302/udp
 # use to interact with Consul.
 EXPOSE 8500 8600 8600/udp
 
-CMD ["consul","agent","-server","-ui", "-bootstrap-expect","3","-data-dir","/consul/data","-config-dir","/consul/config","-join","10.42.174.216", "-client", "0.0.0.0"]
+CMD ["consul","agent","-server","-ui", "-bootstrap-expect","3","-data-dir","/consul/data", "-client", "0.0.0.0"]

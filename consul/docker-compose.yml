@@ -6,7 +6,7 @@ volumes:
     per_container: true
 services:
   consul-server1:
-    image: 11.4.76.193/library/consul-wzq:latest
+    image: 11.4.76.193/redis/consul-wzq:latest
     ports:
           - "8400:8400"
           - "8500:8500"
@@ -15,10 +15,12 @@ services:
           - "CONSUL_LOCAL_CONFIG={\"disable_update_check\": true}"
     volumes:
           - nfs-volume:/consul/data
+    labels:
+      io.rancher.container.pull_image: always
     command: "consul agent -server -ui -bootstrap-expect 3  -data-dir /consul/data -config-dir /consul/config -client 0.0.0.0"
 
   consul-server2:
-    image: 11.4.76.193/library/consul-wzq:latest
+    image: 11.4.76.193/redis/consul-wzq:latest
     ports:
           - "8400:8400"
           - "8500:8500"
@@ -28,7 +30,8 @@ services:
     volumes:
           - nfs-volume:/consul/data
     command: "consul agent -server -ui -retry-join consul-server1  -data-dir /consul/data -config-dir /consul/config -client 0.0.0.0"
-
+    labels:
+      io.rancher.container.pull_image: always
   lb:
     image: 11.4.76.186/rancher/lb-service-haproxy:v0.7.15
     ports:
