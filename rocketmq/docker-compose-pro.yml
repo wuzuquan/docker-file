@@ -16,17 +16,17 @@ volumes:
         size: 30G
 services:
   namesrv1:
-    image: 11.4.76.193/redis/rocketmq-namesrv:4.2.0
+    image: 11.4.76.193/redis/rocketmq-namesrv:4.3
     volumes:
       - nfs-volume:/rocketmq/store
 
   namesrv2:
-    image: 11.4.76.193/redis/rocketmq-namesrv:4.2.0
+    image: 11.4.76.193/redis/rocketmq-namesrv:4.3
     volumes:
       - nfs-volume:/rocketmq/store
 
   broker-a:
-    image: 11.4.76.193/redis/rocketmq-broker:4.2.0
+    image: 11.4.76.193/redis/rocketmq-broker:4.3
     volumes:
       - nfs-volume:/rocketmq/store
       - commitlog:/rocketmq/commitlog
@@ -41,7 +41,7 @@ services:
 
 
   broker-a-s:
-    image: 11.4.76.193/redis/rocketmq-broker:4.2.0
+    image: 11.4.76.193/redis/rocketmq-broker:4.3
     volumes:
       - nfs-volume:/rocketmq/store
       - commitlog:/rocketmq/commitlog
@@ -55,7 +55,7 @@ services:
       io.rancher.container.pull_image: always
 
   broker-b:
-    image: 11.4.76.193/redis/rocketmq-broker:4.2.0
+    image: 11.4.76.193/redis/rocketmq-broker:4.3
 
     volumes:
       - nfs-volume:/rocketmq/store
@@ -70,7 +70,7 @@ services:
       io.rancher.container.pull_image: always
 
   broker-b-s:
-    image: 11.4.76.193/redis/rocketmq-broker:4.2.0
+    image: 11.4.76.193/redis/rocketmq-broker:4.3
 
     volumes:
       - nfs-volume:/rocketmq/store

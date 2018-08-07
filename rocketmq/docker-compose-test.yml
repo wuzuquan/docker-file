@@ -10,7 +10,7 @@ volumes:
       size: 30G
 services:
   namesrv1:
-    image: 11.4.76.193/redis/rocketmq-namesrv:4.2.0
+    image: 11.4.76.193/redis/rocketmq-namesrv:4.3
     network_mode: host
     volumes:
       - rbd:/rocketmq/store
@@ -20,7 +20,7 @@ services:
       io.rancher.scheduler.affinity:container_label_ne: app_label_to_host=namesrv_cluster_06645
       app_label_to_host: namesrv_cluster_06645
   namesrv2:
-    image: 11.4.76.193/redis/rocketmq-namesrv:4.2.0
+    image: 11.4.76.193/redis/rocketmq-namesrv:4.3
     network_mode: host
     volumes:
       - rbd:/rocketmq/store
@@ -31,7 +31,7 @@ services:
       app_label_to_host: namesrv_cluster_06645
  
   broker-a:
-    image: 11.4.76.193/redis/rocketmq-broker:4.2.0
+    image: 11.4.76.193/redis/rocketmq-broker:4.3
     network_mode: host
     volumes:
       - rbd:/rocketmq/store
@@ -47,7 +47,7 @@ services:
 
 
   broker-a-s:
-    image: 11.4.76.193/redis/rocketmq-broker:4.2.0
+    image: 11.4.76.193/redis/rocketmq-broker:4.3
     network_mode: host
     stdin_open: true 
     tty: true   
@@ -64,7 +64,7 @@ services:
       io.rancher.container.dns: 'true'
 
   broker-b:
-    image: 11.4.76.193/redis/rocketmq-broker:4.2.0
+    image: 11.4.76.193/redis/rocketmq-broker:4.3
     network_mode: host
     stdin_open: true 
     tty: true   
@@ -81,7 +81,7 @@ services:
       io.rancher.container.dns: 'true'
 
   broker-b-s:
-    image: 11.4.76.193/redis/rocketmq-broker:4.2.0
+    image: 11.4.76.193/redis/rocketmq-broker:4.3
     network_mode: host
     stdin_open: true 
     tty: true   

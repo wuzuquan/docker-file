@@ -3,19 +3,24 @@ FROM docker.io/openjdk:8-jre-alpine
 ARG version
 
 # Rocketmq version
-ENV ROCKETMQ_VERSION 4.2.0
+ENV ROCKETMQ_VERSION 4.3.0
 
-ENV ROCKETMQ_HOME  /rocketmq/rocketmq-4.2.0
+ENV ROCKETMQ_HOME  /rocketmq/rocketmq-home
 
 WORKDIR  ${ROCKETMQ_HOME}
-RUN mkdir -p /rocketmq/rocketmq-4.2.0
+RUN mkdir -p /rocketmq/rocketmq-home
 RUN mkdir -p \
 		/rocketmq/logs \
 	    /rocketmq/store
 
 
-COPY rocketmq-all-4.2.0-bin-release.zip /rocketmq/rocketmq-4.2.0/
-RUN  unzip  rocketmq-all-4.2.0-bin-release.zip
+COPY rocketmq-all-4.3.0-bin-release.zip /rocketmq/rocketmq-home/
+RUN  unzip  rocketmq-all-4.3.0-bin-release.zip
+
+RUN  mv rocketmq-all-4.3.0-bin-release/*  .
+RUN  rm -rf rocketmq-all-4.3.0-bin-release
+RUN  rm -f  rocketmq-all-4.3.0-bin-release.zip
+
 
 RUN chmod +x bin/mqnamesrv
 CMD  cd bin && export JAVA_OPT=" -Duser.home=/rocketmq" && sh mqnamesrv
