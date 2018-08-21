@@ -50,6 +50,22 @@ echo "useReentrantLockWhenPutMessage=true" >> conf/2m-2s-sync/broker-a-s.propert
 echo "useReentrantLockWhenPutMessage=true" >> conf/2m-2s-sync/broker-b.properties
 echo "useReentrantLockWhenPutMessage=true" >> conf/2m-2s-sync/broker-b-s.properties
 
+echo "transactionCheckInterval=3000" >> conf/2m-2s-sync/broker-a.properties
+echo "transactionCheckInterval=3000" >> conf/2m-2s-sync/broker-a-s.properties
+echo "transactionCheckInterval=3000" >> conf/2m-2s-sync/broker-b.properties
+echo "transactionCheckInterval=3000" >> conf/2m-2s-sync/broker-b-s.properties
+echo "transactionTimeOut=2000" >> conf/2m-2s-sync/broker-a.properties
+echo "transactionTimeOut=2000" >> conf/2m-2s-sync/broker-a-s.properties
+echo "transactionTimeOut=2000" >> conf/2m-2s-sync/broker-b.properties
+echo "transactionTimeOut=2000" >> conf/2m-2s-sync/broker-b-s.properties
+echo "transactionCheckMax=3" >> conf/2m-2s-sync/broker-a.properties
+echo "transactionCheckMax=3" >> conf/2m-2s-sync/broker-a-s.properties
+echo "transactionCheckMax=3" >> conf/2m-2s-sync/broker-b.properties
+echo "transactionCheckMax=3" >> conf/2m-2s-sync/broker-b-s.properties
+
+
+
+
 
 
 echo "brokerIP1=$ipaddr" >> conf/2m-2s-async/broker-a.properties
@@ -95,8 +111,30 @@ echo "useReentrantLockWhenPutMessage=true" >> conf/2m-2s-async/broker-b.properti
 echo "useReentrantLockWhenPutMessage=true" >> conf/2m-2s-async/broker-b-s.properties
 
 
+echo "transactionCheckInterval=3000" >> conf/2m-2s-async/broker-a.properties
+echo "transactionCheckInterval=3000" >> conf/2m-2s-async/broker-a-s.properties
+echo "transactionCheckInterval=3000" >> conf/2m-2s-async/broker-b.properties
+echo "transactionCheckInterval=3000" >> conf/2m-2s-async/broker-b-s.properties
+echo "transactionTimeOut=2000" >> conf/2m-2s-async/broker-a.properties
+echo "transactionTimeOut=2000" >> conf/2m-2s-async/broker-a-s.properties
+echo "transactionTimeOut=2000" >> conf/2m-2s-async/broker-b.properties
+echo "transactionTimeOut=2000" >> conf/2m-2s-async/broker-b-s.properties
+echo "transactionCheckMax=3" >> conf/2m-2s-async/broker-a.properties
+echo "transactionCheckMax=3" >> conf/2m-2s-async/broker-a-s.properties
+echo "transactionCheckMax=3" >> conf/2m-2s-async/broker-b.properties
+echo "transactionCheckMax=3" >> conf/2m-2s-async/broker-b-s.properties
+
+
 
 echo "brokerIP1=$ipaddr" >> conf/2m-noslave/broker-a.properties
 echo "brokerIP1=$ipaddr" >> conf/2m-noslave/broker-b.properties
+
+#sysctl.conf
+echo vm.max_map_count=655360 >> /etc/sysctl.conf
+echo vm.overcommit_memory=1 >> /etc/sysctl.conf
+echo net.core.somaxconn= 16384 >> /etc/sysctl.conf
+
+echo vm.swappiness=0 >> /etc/sysctl.conf
+echo vm.min_free_kbytes=5000 >>/etc/sysctl.conf
 
 exec "$@"

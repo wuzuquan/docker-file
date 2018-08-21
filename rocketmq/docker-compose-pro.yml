@@ -27,6 +27,7 @@ services:
 
   broker-a:
     image: 11.4.76.193/redis/rocketmq-broker:4.3
+    privileged: true
     volumes:
       - nfs-volume:/rocketmq/store
       - commitlog:/rocketmq/commitlog
@@ -42,6 +43,7 @@ services:
 
   broker-a-s:
     image: 11.4.76.193/redis/rocketmq-broker:4.3
+    privileged: true
     volumes:
       - nfs-volume:/rocketmq/store
       - commitlog:/rocketmq/commitlog
@@ -56,7 +58,7 @@ services:
 
   broker-b:
     image: 11.4.76.193/redis/rocketmq-broker:4.3
-
+    privileged: true
     volumes:
       - nfs-volume:/rocketmq/store
       - commitlog:/rocketmq/commitlog
@@ -71,7 +73,7 @@ services:
 
   broker-b-s:
     image: 11.4.76.193/redis/rocketmq-broker:4.3
-
+    privileged: true
     volumes:
       - nfs-volume:/rocketmq/store
       - commitlog:/rocketmq/commitlog
