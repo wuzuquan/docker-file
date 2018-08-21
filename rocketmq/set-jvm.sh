@@ -137,4 +137,7 @@ echo net.core.somaxconn= 16384 >> /etc/sysctl.conf
 echo vm.swappiness=0 >> /etc/sysctl.conf
 echo vm.min_free_kbytes=5000 >>/etc/sysctl.conf
 
+
+
+
 exec "$@"
