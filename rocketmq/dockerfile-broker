@@ -22,6 +22,11 @@ RUN  mv rocketmq-all-4.3.0-bin-release/*  .
 RUN  rm -rf rocketmq-all-4.3.0-bin-release
 RUN  rm -f  rocketmq-all-4.3.0-bin-release.zip
 
+#replace log path
+COPY logback_broker.xml /rocketmq/rocketmq-home/conf/
+COPY logback_namesrv.xml /rocketmq/rocketmq-home/conf/
+COPY logback_tools.xml /rocketmq/rocketmq-home/conf/
+COPY logback_filtersrv.xml /rocketmq/rocketmq-home/conf/
 
 
 RUN export JAVA_OPT=" -Duser.home=/rocketmq"

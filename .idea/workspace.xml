@@ -2,13 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8c92cb99-8a53-4571-9e13-b9b2652760eb" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/rocketmq/logback_broker.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/rocketmq/logback_filtersrv.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/rocketmq/logback_namesrv.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/rocketmq/logback_tools.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/rocketmq/dockerfile-namesrv" afterPath="$PROJECT_DIR$/rocketmq/dockerfile-namesrv" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/rocketmq/set-jvm.sh" afterPath="$PROJECT_DIR$/rocketmq/set-jvm.sh" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/rocketmq/dockerfile-broker" afterPath="$PROJECT_DIR$/rocketmq/dockerfile-broker" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -89,11 +84,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="dockerfile-broker" pinned="false" current-in-tab="false">
+      <file leaf-file-name="dockerfile-broker" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/rocketmq/dockerfile-broker">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="324">
-              <caret line="12" column="14" lean-forward="true" selection-start-line="12" selection-start-column="14" selection-end-line="12" selection-end-column="14" />
+            <state relative-caret-position="351">
+              <caret line="28" column="56" lean-forward="true" selection-start-line="28" selection-start-column="56" selection-end-line="28" selection-end-column="56" />
               <folding />
             </state>
           </provider>
@@ -109,11 +104,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="dockerfile-namesrv" pinned="false" current-in-tab="true">
+      <file leaf-file-name="dockerfile-namesrv" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/rocketmq/dockerfile-namesrv">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="515">
-              <caret line="24" column="0" lean-forward="true" selection-start-line="24" selection-start-column="0" selection-end-line="24" selection-end-column="0" />
+            <state relative-caret-position="569">
+              <caret line="26" column="0" lean-forward="false" selection-start-line="26" selection-start-column="0" selection-end-line="31" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -151,7 +146,6 @@
         <option value="$PROJECT_DIR$/README.md" />
         <option value="$PROJECT_DIR$/consul/docker-compose.yml" />
         <option value="$PROJECT_DIR$/consul/docker-compose-pro.yml" />
-        <option value="$PROJECT_DIR$/rocketmq/dockerfile-broker" />
         <option value="$PROJECT_DIR$/rocketmq/docker-compose-test.yml" />
         <option value="$PROJECT_DIR$/consul/Dockerfile-consul" />
         <option value="$PROJECT_DIR$/redis/redis.conf" />
@@ -163,6 +157,7 @@
         <option value="$PROJECT_DIR$/rocketmq/logback_broker.xml" />
         <option value="$PROJECT_DIR$/rocketmq/set-jvm.sh" />
         <option value="$PROJECT_DIR$/rocketmq/dockerfile-namesrv" />
+        <option value="$PROJECT_DIR$/rocketmq/dockerfile-broker" />
       </list>
     </option>
   </component>
@@ -369,7 +364,7 @@
       <workItem from="1534468770765" duration="6274000" />
       <workItem from="1534724025788" duration="4379000" />
       <workItem from="1534753993973" duration="36000" />
-      <workItem from="1534810530700" duration="4827000" />
+      <workItem from="1534810530700" duration="4884000" />
     </task>
     <task id="LOCAL-00001" summary="完善consul">
       <created>1532051392312</created>
@@ -406,11 +401,18 @@
       <option name="project" value="LOCAL" />
       <updated>1534831175866</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="rocketmq：优化日志消息">
+      <created>1534832247201</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1534832247201</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="71205000" />
+    <option name="totallyTimeSpent" value="71262000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -436,7 +438,7 @@
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.1734104" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.18459658" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.18459658" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32947975" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -489,7 +491,8 @@
     <MESSAGE value="完善consul f" />
     <MESSAGE value="redis：优化docker内核" />
     <MESSAGE value="rocketmq：优化docker内核,优化事务消息配置" />
-    <option name="LAST_COMMIT_MESSAGE" value="rocketmq：优化docker内核,优化事务消息配置" />
+    <MESSAGE value="rocketmq：优化日志消息" />
+    <option name="LAST_COMMIT_MESSAGE" value="rocketmq：优化日志消息" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -794,14 +797,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/rocketmq/dockerfile-broker">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="324">
-          <caret line="12" column="14" lean-forward="true" selection-start-line="12" selection-start-column="14" selection-end-line="12" selection-end-column="14" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/redis/Dockerfile-redis-cluster-node">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="270">
@@ -860,8 +855,16 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/rocketmq/dockerfile-namesrv">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="515">
-          <caret line="24" column="0" lean-forward="true" selection-start-line="24" selection-start-column="0" selection-end-line="24" selection-end-column="0" />
+        <state relative-caret-position="569">
+          <caret line="26" column="0" lean-forward="false" selection-start-line="26" selection-start-column="0" selection-end-line="31" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/rocketmq/dockerfile-broker">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="351">
+          <caret line="28" column="56" lean-forward="true" selection-start-line="28" selection-start-column="56" selection-end-line="28" selection-end-column="56" />
           <folding />
         </state>
       </provider>
