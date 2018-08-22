@@ -1,6 +1,11 @@
 #!/bin/sh
 
 sed  -i  "s/-Xms8g -Xmx8g -Xmn4g/$MEMORY/g" bin/runbroker.sh
+
+sed  -i  "s/broker-name/$BROKERNAME/g" conf/2m-2s-sync/master.properties
+sed  -i  "s/broker-name/$BROKERNAME/g" conf/2m-2s-sync/slave.properties
+
+
 echo $MEMORY
 
 ipaddr=$(ifconfig eth0|grep 'inet addr:'|awk -F':' '{print $2}'|awk '{print $1}')
@@ -11,6 +16,9 @@ echo "brokerIP1=$ipaddr" >> conf/2m-2s-sync/broker-a.properties
 echo "brokerIP1=$ipaddr" >> conf/2m-2s-sync/broker-a-s.properties
 echo "brokerIP1=$ipaddr" >> conf/2m-2s-sync/broker-b.properties
 echo "brokerIP1=$ipaddr" >> conf/2m-2s-sync/broker-b-s.properties
+echo "brokerIP1=$ipaddr" >> conf/2m-2s-sync/master.properties
+echo "brokerIP1=$ipaddr" >> conf/2m-2s-sync/slave.properties
+
 
 echo "autoCreateTopicEnable=false" >> conf/2m-2s-sync/broker-a.properties
 echo "autoCreateTopicEnable=false" >> conf/2m-2s-sync/broker-a-s.properties
@@ -138,6 +146,7 @@ echo vm.swappiness=0 >> /etc/sysctl.conf
 echo vm.min_free_kbytes=5000 >>/etc/sysctl.conf
 
 
+mkdir /rocketmq/store/consumequeue
 
 
 exec "$@"
