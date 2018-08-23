@@ -37,7 +37,7 @@ services:
       - namesrv1
       - namesrv2
     labels:
-      io.rancher.container.pull_image: always
+      io.rancher.container.pull_image: al ways
     command: "sh bin/mqbroker -c ./conf/2m-2s-sync/broker-a.properties -n namesrv1:9876;namesrv2:9876"
 
 

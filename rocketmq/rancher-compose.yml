@@ -1,9 +1,14 @@
 version: '2'
 services:
-  namesrv:
+  namesrv1:
     retain_ip: true
-    scale: 2
+    scale: 1
     start_on_create: true
+  namesrv2:
+    retain_ip: true
+    scale: 1
+    start_on_create: true
+
   broker-a:
     retain_ip: true
     scale: 1
