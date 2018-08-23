@@ -6,8 +6,8 @@ if [ "$REDISPASSWORD" != "NULL" ]; then
   echo $REDISPASSWORD
   sed -i "s/#requirepass/requirepass  $REDISPASSWORD/g" /redis.conf
 
-
 fi
+
 #disable THP
 echo never > /sys/kernel/mm/transparent_hugepage/enabled
 
