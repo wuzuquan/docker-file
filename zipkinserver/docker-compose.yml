@@ -9,7 +9,7 @@ services:
       - ES_INDEX=zipkin
       - KAFKA_TOPIC=zipkin
       - ES_HOSTS=11.4.74.45:19200,11.4.74.50:19200,11.4.74.47:19200
-   
+      - logging.level.zipkin2=WARN
       - KAFKA_BOOTSTRAP_SERVERS=10.42.66.168:9092,10.42.220.122:9092,10.42.150.222:9092
 
 
