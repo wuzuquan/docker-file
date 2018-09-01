@@ -21,6 +21,12 @@ echo vm.min_free_kbytes=5000 >>/etc/sysctl.conf
 
 #sysctl -w net.core.netdev_max_backlog=16384
 #sysctl -w net.ipv4.tcp_max_syn_backlog=16384
+
+
+echo 10000 65535 > /proc/sys/net/ipv4/ip_local_port_range
+
+
+sudo sysctl -p;
 sysctl -p
 
 exec "$@"

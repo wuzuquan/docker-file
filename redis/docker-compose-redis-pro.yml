@@ -13,6 +13,12 @@ services:
     volumes:
        - rbd:/redis/data
     privileged: true
+    sysctls:
+      net.core.somaxconn: 16384
+      vm.max_map_count: 655360
+      vm.overcommit_memory: 1
+      vm.swappiness: 0
+      vm.min_free_kbytes: 5000
     tty: true
     labels:
       io.rancher.container.pull_image: always
