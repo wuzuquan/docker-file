@@ -3,8 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="8c92cb99-8a53-4571-9e13-b9b2652760eb" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/redis/docker-compose-redis-pro.yml" afterPath="$PROJECT_DIR$/redis/docker-compose-redis-pro.yml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/redis/set-redis-pass.sh" afterPath="$PROJECT_DIR$/redis/set-redis-pass.sh" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -395,7 +393,7 @@
       <workItem from="1535444700859" duration="2001000" />
       <workItem from="1535503189447" duration="33000" />
       <workItem from="1535701085001" duration="770000" />
-      <workItem from="1535769732338" duration="67000" />
+      <workItem from="1535769732338" duration="84000" />
     </task>
     <task id="LOCAL-00001" summary="完善consul">
       <created>1532051392312</created>
@@ -474,11 +472,18 @@
       <option name="project" value="LOCAL" />
       <updated>1535437270998</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="zipkin:修改日志级别">
+      <created>1535769806348</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1535769806348</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="96000000" />
+    <option name="totallyTimeSpent" value="96017000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
