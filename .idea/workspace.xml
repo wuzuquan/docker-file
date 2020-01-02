@@ -482,7 +482,7 @@
       <workItem from="1577177427478" duration="2640000" />
       <workItem from="1577412724110" duration="20392000" />
       <workItem from="1577676923710" duration="4187000" />
-      <workItem from="1577929831586" duration="2467000" />
+      <workItem from="1577929831586" duration="2557000" />
     </task>
     <task id="LOCAL-00001" summary="完善consul">
       <created>1532051392312</created>
@@ -610,11 +610,18 @@
       <option name="project" value="LOCAL" />
       <updated>1577934456037</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL-00019" summary="基于K8S1.15重新改造中间件上云脚本">
+      <created>1577945440323</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1577945440323</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="218391000" />
+    <option name="totallyTimeSpent" value="218481000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
