@@ -1,15 +1,17 @@
 #!/bin/sh
 #set redis.conf  requirepass masterauth
 echo $REDISPASSWORD
-if [ "$REDISPASSWORD" != "NULL" ]; then
+if [ "$REDISPASSWORD" != "default" ]; then
   sed  -i  "s/#masterauth/masterauth  $REDISPASSWORD/g" /redis.conf
   echo $REDISPASSWORD
   sed -i "s/#requirepass/requirepass  $REDISPASSWORD/g" /redis.conf
 
 fi
 
-#disable THP
-echo never > /sys/kernel/mm/transparent_hugepage/enabled
+#设置 最大内存
+ sed  -i  "s/maxmemory 8gb/maxmemory  $MAXMEM/g" /redis.conf
+
+
 
 #sysctl.conf
 echo vm.max_map_count=655360 >> /etc/sysctl.conf

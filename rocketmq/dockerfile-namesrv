@@ -1,27 +1,24 @@
-FROM docker.io/openjdk:8-jre-alpine
+FROM 172.16.44.49/public/jdk:8-shanghai
 
-ARG version
+MAINTAINER wuzuzuquan
 
-# Rocketmq version
-ENV ROCKETMQ_VERSION 4.3.0
 
 ENV ROCKETMQ_HOME  /rocketmq/rocketmq-home
 
-WORKDIR  ${ROCKETMQ_HOME}
+
 RUN mkdir -p /rocketmq/rocketmq-home
-RUN mkdir -p \
-		/rocketmq/logs \
-	    /rocketmq/store
+RUN mkdir -p /rocketmqdata
 
 
-COPY rocketmq-all-4.3.0-bin-release.zip /rocketmq/rocketmq-home/
+WORKDIR  ${ROCKETMQ_HOME}
+COPY rocketmq-all-4.6.0-bin-release.zip /rocketmq/rocketmq-home/
 
 
-RUN  unzip  rocketmq-all-4.3.0-bin-release.zip
+RUN  unzip  rocketmq-all-4.6.0-bin-release.zip
 
-RUN  mv rocketmq-all-4.3.0-bin-release/*  .
-RUN  rm -rf rocketmq-all-4.3.0-bin-release
-RUN  rm -f  rocketmq-all-4.3.0-bin-release.zip
+RUN  mv rocketmq-all-4.6.0-bin-release/*  .
+RUN  rm -rf rocketmq-all-4.6.0-bin-release
+RUN  rm -f  rocketmq-all-4.6.0-bin-release.zip
 
 
 #replace log path
@@ -29,6 +26,12 @@ COPY logback_broker.xml /rocketmq/rocketmq-home/conf/
 COPY logback_namesrv.xml /rocketmq/rocketmq-home/conf/
 COPY logback_tools.xml /rocketmq/rocketmq-home/conf/
 COPY logback_filtersrv.xml /rocketmq/rocketmq-home/conf/
+
+COPY 2m-2s-sync/broker-a.properties /rocketmq/rocketmq-home/conf/2m-2s-sync
+COPY 2m-2s-sync/broker-a-s.properties /rocketmq/rocketmq-home/conf/2m-2s-sync
+COPY 2m-2s-sync/broker-b.properties /rocketmq/rocketmq-home/conf/2m-2s-sync
+COPY 2m-2s-sync/broker-b-s.properties /rocketmq/rocketmq-home/conf/2m-2s-sync
+
 
 
 RUN chmod +x bin/mqnamesrv
