@@ -1,0 +1,9 @@
+FROM 172.16.44.49/public/jdk:8-shanghai
+#设置端口
+EXPOSE 8080
+ENV EUREKA_URL_LIST  172.0.0.1:8080
+ADD eureka.sh /init.sh
+ADD eureka.jar /eureka.jar
+#reset shell
+RUN rm /bin/sh && ln -s /bin/bash /bin/sh
+ENTRYPOINT ["/bin/bash","-c","source /init.sh"]

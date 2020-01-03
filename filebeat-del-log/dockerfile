@@ -1,0 +1,17 @@
+FROM 172.16.44.49/public/bash:latest
+MAINTAINER wuzuquan
+
+RUN mkdir  -p /var/applog
+
+#WORKDIR /var/applog
+
+
+ENV  LOG_RETAIN_DAYS 3
+
+COPY delete_log.sh /delete_log.sh
+
+RUN chmod +x /delete_log.sh
+
+CMD ["bash","/delete_log.sh"]
+
+

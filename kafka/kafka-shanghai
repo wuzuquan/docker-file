@@ -1,0 +1,11 @@
+FROM 172.16.44.49/daocloud/kafka:kafka_2.12-2.2.0
+MAINTAINER wuzuquan
+
+
+#设置时区
+COPY shanghai.timezone  /etc/localtime
+RUN  echo 'Asia/Shanghai' >/etc/timezone 
+
+
+
+
