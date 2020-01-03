@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="8c92cb99-8a53-4571-9e13-b9b2652760eb" name="Default" comment="增加kafka  eureka">
+    <list default="true" id="8c92cb99-8a53-4571-9e13-b9b2652760eb" name="Default" comment="增加ceph接入paas">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ceph/install-ceph-common.sh" afterPath="$PROJECT_DIR$/ceph/install-ceph-common.sh" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -33,11 +34,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="install-ceph-common.sh" pinned="false" current-in-tab="false">
+      <file leaf-file-name="install-ceph-common.sh" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/ceph/install-ceph-common.sh">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+            <state relative-caret-position="-1462">
+              <caret line="2" column="0" lean-forward="true" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -53,11 +54,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="sc-wzqtest.yaml" pinned="false" current-in-tab="true">
+      <file leaf-file-name="sc-wzqtest.yaml" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/ceph/rbd-privisioner-test/sc-wzqtest.yaml">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="432">
-              <caret line="16" column="25" lean-forward="true" selection-start-line="16" selection-start-column="25" selection-end-line="16" selection-end-column="25" />
+              <caret line="16" column="2" lean-forward="false" selection-start-line="16" selection-start-column="2" selection-end-line="16" selection-end-column="2" />
               <folding />
             </state>
           </provider>
@@ -156,8 +157,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/README.md" />
-        <option value="$PROJECT_DIR$/consul/docker-compose.yml" />
         <option value="$PROJECT_DIR$/consul/docker-compose-pro.yml" />
         <option value="$PROJECT_DIR$/rocketmq/docker-compose-test.yml" />
         <option value="$PROJECT_DIR$/consul/Dockerfile-consul" />
@@ -207,6 +206,8 @@
         <option value="$PROJECT_DIR$/filebeat-del-log/deletelog-pro.yaml" />
         <option value="$PROJECT_DIR$/filebeat-del-log/deletelog-test.yaml" />
         <option value="$PROJECT_DIR$/rocketmq/rocketmq-acl.yaml" />
+        <option value="$PROJECT_DIR$/ceph/rbd-privisioner-test/sc-wzqtest.yaml" />
+        <option value="$PROJECT_DIR$/ceph/install-ceph-common.sh" />
       </list>
     </option>
   </component>
@@ -255,27 +256,6 @@
             <path>
               <item name="docker-file" type="b2602c69:ProjectViewProjectNode" />
               <item name="docker-file" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="docker-file" type="b2602c69:ProjectViewProjectNode" />
-              <item name="docker-file" type="462c0819:PsiDirectoryNode" />
-              <item name="ceph" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="docker-file" type="b2602c69:ProjectViewProjectNode" />
-              <item name="docker-file" type="462c0819:PsiDirectoryNode" />
-              <item name="ceph" type="462c0819:PsiDirectoryNode" />
-              <item name="rbd-privisioner-test" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="docker-file" type="b2602c69:ProjectViewProjectNode" />
-              <item name="docker-file" type="462c0819:PsiDirectoryNode" />
-              <item name="eureka" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="docker-file" type="b2602c69:ProjectViewProjectNode" />
-              <item name="docker-file" type="462c0819:PsiDirectoryNode" />
-              <item name="zipkinserver" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -498,7 +478,7 @@
       <workItem from="1577177427478" duration="2640000" />
       <workItem from="1577412724110" duration="20392000" />
       <workItem from="1577676923710" duration="4187000" />
-      <workItem from="1577929831586" duration="8614000" />
+      <workItem from="1577929831586" duration="9302000" />
     </task>
     <task id="LOCAL-00001" summary="完善consul">
       <created>1532051392312</created>
@@ -668,11 +648,18 @@
       <option name="project" value="LOCAL" />
       <updated>1578033022038</updated>
     </task>
-    <option name="localTasksCounter" value="25" />
+    <task id="LOCAL-00025" summary="增加ceph接入paas">
+      <created>1578033500538</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1578033500538</updated>
+    </task>
+    <option name="localTasksCounter" value="26" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="224538000" />
+    <option name="totallyTimeSpent" value="225226000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -696,7 +683,7 @@
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.28125" sideWeight="0.7489339" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.1734104" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.1716418" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.1716418" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="JRebel" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="BPMNPalette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -764,7 +751,8 @@
     <MESSAGE value="基于K8S1.15重新改造中间件上云脚本" />
     <MESSAGE value="修改redis、mq 编排脚本" />
     <MESSAGE value="增加kafka  eureka" />
-    <option name="LAST_COMMIT_MESSAGE" value="增加kafka  eureka" />
+    <MESSAGE value="增加ceph接入paas" />
+    <option name="LAST_COMMIT_MESSAGE" value="增加ceph接入paas" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -1118,14 +1106,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/ceph/install-ceph-common.sh">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/ceph/ceph-secret.yaml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -1177,7 +1157,15 @@
     <entry file="file://$PROJECT_DIR$/ceph/rbd-privisioner-test/sc-wzqtest.yaml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="432">
-          <caret line="16" column="25" lean-forward="true" selection-start-line="16" selection-start-column="25" selection-end-line="16" selection-end-column="25" />
+          <caret line="16" column="2" lean-forward="false" selection-start-line="16" selection-start-column="2" selection-end-line="16" selection-end-column="2" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ceph/install-ceph-common.sh">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1462">
+          <caret line="2" column="0" lean-forward="true" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
           <folding />
         </state>
       </provider>

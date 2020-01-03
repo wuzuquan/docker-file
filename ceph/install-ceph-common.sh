@@ -1,4 +1,5 @@
 #! /bin/sh
+#各主机节点必须安装ceph-common组件
 
 cat > /etc/pki/rpm-gpg/RPM-GPG-KEY-EPEL-7 << EOF
 -----BEGIN PGP PUBLIC KEY BLOCK-----
