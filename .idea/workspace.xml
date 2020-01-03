@@ -2,7 +2,24 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8c92cb99-8a53-4571-9e13-b9b2652760eb" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/eureka/k8s-eureka-pro.yaml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/eureka/k8s-eureka-test.yaml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/eureka/start.sh" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/filebeat-del-log/deletelog-pro.yaml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/rocketmq/rocketmq-acl.yaml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/zipkinserver/k8s-zipkin-pro.yaml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/zipkinserver/k8s-zipkin-test.yaml" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/zipkinserver/docker-compose.yml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/zipkinserver/rancher-compose.yml" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/zipkinserver/docker-zipkin-server" afterPath="$PROJECT_DIR$/zipkinserver/docker-zipkin-server" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/zipkinserver/start.sh" afterPath="$PROJECT_DIR$/zipkinserver/start.sh" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/redis/k8s-redis-cluster-pro.yml" afterPath="$PROJECT_DIR$/redis/k8s-redis-cluster-pro.yaml" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/redis/k8s-redis-cluster-test.yml" afterPath="$PROJECT_DIR$/redis/k8s-redis-cluster-test.yaml" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/redis/k8s-redis-single-pro.yml" afterPath="$PROJECT_DIR$/redis/k8s-redis-single-pro.yaml" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/redis/k8s-redis-single-test.yml" afterPath="$PROJECT_DIR$/redis/k8s-redis-single-test.yaml" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/rocketmq/k8s-2m-2s-sync-pro.yml" afterPath="$PROJECT_DIR$/rocketmq/k8s-2m-2s-sync-pro.yaml" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/rocketmq/k8s-2m-2s-sync-test.yml" afterPath="$PROJECT_DIR$/rocketmq/k8s-2m-2s-sync-test.yaml" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -13,101 +30,101 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="set-jvm.sh" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/rocketmq/set-jvm.sh">
+      <file leaf-file-name="eureka.yaml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/eureka/eureka.yaml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-450">
-              <caret line="9" column="12" lean-forward="true" selection-start-line="9" selection-start-column="12" selection-end-line="9" selection-end-column="12" />
+            <state relative-caret-position="-1015">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="broker-a.properties" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/rocketmq/2m-2s-sync/broker-a.properties">
+      <file leaf-file-name="eureka-dockerfile" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/eureka/eureka-dockerfile">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="415">
-              <caret line="27" column="36" lean-forward="true" selection-start-line="27" selection-start-column="36" selection-end-line="27" selection-end-column="36" />
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="broker-a-s.properties" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/rocketmq/2m-2s-sync/broker-a-s.properties">
+      <file leaf-file-name="delete_log.sh" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/filebeat-del-log/delete_log.sh">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="162">
+              <caret line="6" column="6" lean-forward="false" selection-start-line="6" selection-start-column="6" selection-end-line="6" selection-end-column="11" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="deletelog-test.yaml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/filebeat-del-log/deletelog-test.yaml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="470">
+              <caret line="28" column="19" lean-forward="false" selection-start-line="28" selection-start-column="19" selection-end-line="28" selection-end-column="19" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="deletelog-pro.yaml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/filebeat-del-log/deletelog-pro.yaml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="378">
+              <caret line="28" column="19" lean-forward="false" selection-start-line="28" selection-start-column="19" selection-end-line="28" selection-end-column="19" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="dockerfile" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/filebeat-del-log/dockerfile">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="rocketmq-acl.yaml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/rocketmq/rocketmq-acl.yaml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="108">
+              <caret line="4" column="21" lean-forward="false" selection-start-line="4" selection-start-column="21" selection-end-line="4" selection-end-column="21" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="dockerfile-jdk-shanghai" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/dockerfile-jdk-shanghai">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="kafka-shanghai" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/kafka/kafka-shanghai">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="243">
-              <caret line="23" column="14" lean-forward="false" selection-start-line="23" selection-start-column="14" selection-end-line="23" selection-end-column="14" />
+              <caret line="9" column="0" lean-forward="true" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="k8s-2m-2s-sync-pro.yml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/rocketmq/k8s-2m-2s-sync-pro.yml">
+      <file leaf-file-name="eureka.sh" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/eureka/eureka.sh">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="607">
-              <caret line="519" column="0" lean-forward="true" selection-start-line="519" selection-start-column="0" selection-end-line="519" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="k8s-redis-cluster-pro.yml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/redis/k8s-redis-cluster-pro.yml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="607">
-              <caret line="122" column="0" lean-forward="true" selection-start-line="122" selection-start-column="0" selection-end-line="122" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="k8s-redis-single-pro.yml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/redis/k8s-redis-single-pro.yml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="607">
-              <caret line="114" column="0" lean-forward="false" selection-start-line="114" selection-start-column="0" selection-end-line="114" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="dockerfile-broker" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/rocketmq/dockerfile-broker">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="324">
-              <caret line="12" column="0" lean-forward="true" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="k8s-2m-2s-sync-test.yml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/rocketmq/k8s-2m-2s-sync-test.yml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="256">
-              <caret line="506" column="25" lean-forward="true" selection-start-line="506" selection-start-column="25" selection-end-line="506" selection-end-column="25" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="dockerfile-namesrv" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/rocketmq/dockerfile-namesrv">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="631">
-              <caret line="34" column="0" lean-forward="false" selection-start-line="34" selection-start-column="0" selection-end-line="34" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="broker-b-s.properties" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/rocketmq/2m-2s-sync/broker-b-s.properties">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-19">
-              <caret line="21" column="16" lean-forward="true" selection-start-line="21" selection-start-column="16" selection-end-line="21" selection-end-column="16" />
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -198,6 +215,15 @@
         <option value="$PROJECT_DIR$/redis/k8s-redis-single-pro.yml" />
         <option value="$PROJECT_DIR$/rocketmq/k8s-2m-2s-sync-pro.yml" />
         <option value="$PROJECT_DIR$/rocketmq/k8s-2m-2s-sync-test.yml" />
+        <option value="$PROJECT_DIR$/zipkinserver/k8s-zipkin-test.yml" />
+        <option value="$PROJECT_DIR$/zipkinserver/k8s-zipkin-pro.yml" />
+        <option value="$PROJECT_DIR$/eureka/k8s-eureka-pro.yml" />
+        <option value="$PROJECT_DIR$/eureka/k8s-eureka-test.yml" />
+        <option value="$PROJECT_DIR$/filebeat-del-log/deletelog.yaml" />
+        <option value="$PROJECT_DIR$/filebeat-del-log/kafka-shanghai" />
+        <option value="$PROJECT_DIR$/filebeat-del-log/deletelog-pro.yaml" />
+        <option value="$PROJECT_DIR$/filebeat-del-log/deletelog-test.yaml" />
+        <option value="$PROJECT_DIR$/rocketmq/rocketmq-acl.yaml" />
       </list>
     </option>
   </component>
@@ -247,31 +273,6 @@
               <item name="docker-file" type="b2602c69:ProjectViewProjectNode" />
               <item name="docker-file" type="462c0819:PsiDirectoryNode" />
             </path>
-            <path>
-              <item name="docker-file" type="b2602c69:ProjectViewProjectNode" />
-              <item name="docker-file" type="462c0819:PsiDirectoryNode" />
-              <item name="consul" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="docker-file" type="b2602c69:ProjectViewProjectNode" />
-              <item name="docker-file" type="462c0819:PsiDirectoryNode" />
-              <item name="prometheus+grafana" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="docker-file" type="b2602c69:ProjectViewProjectNode" />
-              <item name="docker-file" type="462c0819:PsiDirectoryNode" />
-              <item name="redis" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="docker-file" type="b2602c69:ProjectViewProjectNode" />
-              <item name="docker-file" type="462c0819:PsiDirectoryNode" />
-              <item name="rocketmq" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="docker-file" type="b2602c69:ProjectViewProjectNode" />
-              <item name="docker-file" type="462c0819:PsiDirectoryNode" />
-              <item name="zipkinserver" type="462c0819:PsiDirectoryNode" />
-            </path>
           </expand>
           <select />
         </subPane>
@@ -286,12 +287,16 @@
     <property name="settings.editor.selected.configurable" value="settings.github" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\备份资料\项目工程\docker-file\kafka" />
+      <recent name="D:\备份资料\项目工程\docker-file" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="D:\备份资料\项目工程\docker-file\rocketmq" />
+      <recent name="D:\备份资料\项目工程\docker-file\filebeat-del-log" />
+      <recent name="D:\备份资料\项目工程\docker-file" />
+      <recent name="D:\备份资料\项目工程\docker-file\zipkinserver" />
       <recent name="D:\备份资料\项目工程\docker-file\redis" />
-      <recent name="D:\IdeaProjects\docker-file\redis" />
-      <recent name="D:\IdeaProjects\docker-file\rocketmq\2m-2s-sync" />
-      <recent name="D:\IdeaProjects\docker-file\rocketmq\2m-2s-async" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -488,7 +493,7 @@
       <workItem from="1577177427478" duration="2640000" />
       <workItem from="1577412724110" duration="20392000" />
       <workItem from="1577676923710" duration="4187000" />
-      <workItem from="1577929831586" duration="5947000" />
+      <workItem from="1577929831586" duration="8084000" />
     </task>
     <task id="LOCAL-00001" summary="完善consul">
       <created>1532051392312</created>
@@ -637,11 +642,18 @@
       <option name="project" value="LOCAL" />
       <updated>1578024300023</updated>
     </task>
-    <option name="localTasksCounter" value="22" />
+    <task id="LOCAL-00022" summary="修改redis、mq 编排脚本">
+      <created>1578024322077</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1578024322077</updated>
+    </task>
+    <option name="localTasksCounter" value="23" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="221871000" />
+    <option name="totallyTimeSpent" value="224008000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -739,132 +751,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/redis/redis-node3/redis.conf">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15957">
-          <caret line="591" column="0" lean-forward="true" selection-start-line="591" selection-start-column="0" selection-end-line="591" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/redis/redis-node4/redis.conf">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15957">
-          <caret line="591" column="13" lean-forward="false" selection-start-line="591" selection-start-column="13" selection-end-line="591" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/redis/redis-node5/redis.conf">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15930">
-          <caret line="590" column="13" lean-forward="false" selection-start-line="590" selection-start-column="13" selection-end-line="590" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/redis/redis-node6/redis.conf">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15930">
-          <caret line="590" column="13" lean-forward="false" selection-start-line="590" selection-start-column="13" selection-end-line="590" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/consul/docker-compose.yml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="837">
-          <caret line="31" column="132" lean-forward="false" selection-start-line="31" selection-start-column="14" selection-end-line="31" selection-end-column="132" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/.idea/workspace.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/redis/redis-node2/redis.conf">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15876">
-          <caret line="588" column="0" lean-forward="false" selection-start-line="588" selection-start-column="0" selection-end-line="588" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/zipkinserver/run.sh" />
-    <entry file="file://$PROJECT_DIR$/consul/docker-compose-pro.yml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="28">
-          <caret line="13" column="34" lean-forward="true" selection-start-line="13" selection-start-column="34" selection-end-line="13" selection-end-column="34" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/prometheus+grafana/docker-compose.yml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="189">
-          <caret line="7" column="0" lean-forward="false" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/zipkinserver/docker-compose.yml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="351">
-          <caret line="13" column="0" lean-forward="false" selection-start-line="13" selection-start-column="0" selection-end-line="13" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/consul/rancher-compose.yml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="108">
-          <caret line="4" column="11" lean-forward="false" selection-start-line="4" selection-start-column="11" selection-end-line="4" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/consul/Dockerfile-consul">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="594">
-          <caret line="22" column="112" lean-forward="true" selection-start-line="22" selection-start-column="112" selection-end-line="22" selection-end-column="112" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/zipkinserver/rancher-compose.yml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="216">
-          <caret line="8" column="25" lean-forward="false" selection-start-line="8" selection-start-column="25" selection-end-line="8" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/zipkinserver/docker-zipkin-server">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="405">
-          <caret line="15" column="11" lean-forward="true" selection-start-line="15" selection-start-column="11" selection-end-line="15" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/README.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="SPLIT">
-          <first_editor relative-caret-position="27">
-            <caret line="1" column="0" lean-forward="true" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
-          </first_editor>
-          <second_editor />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/zipkinserver/start.sh">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="27">
-          <caret line="1" column="0" lean-forward="true" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/rocketmq/logback_tools.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/rocketmq/2m-2s-sync/slave.properties" />
-    <entry file="file://$PROJECT_DIR$/rocketmq/2m-2s-sync/master.properties" />
     <entry file="file://$PROJECT_DIR$/rocketmq/logback_namesrv.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-338">
@@ -977,22 +863,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/redis/k8s-redis-cluster-test.yml">
+    <entry file="file://$PROJECT_DIR$/redis/k8s-redis-cluster-test.yaml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-2527">
           <caret line="9" column="11" lean-forward="true" selection-start-line="9" selection-start-column="11" selection-end-line="9" selection-end-column="11" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/redis/README.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="SPLIT">
-          <first_editor relative-caret-position="270">
-            <caret line="10" column="0" lean-forward="true" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
-            <folding />
-          </first_editor>
-          <second_editor />
         </state>
       </provider>
     </entry>
@@ -1004,7 +879,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/redis/k8s-redis-single-test.yml">
+    <entry file="file://$PROJECT_DIR$/redis/k8s-redis-single-test.yaml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="443">
           <caret line="111" column="17" lean-forward="false" selection-start-line="111" selection-start-column="17" selection-end-line="111" selection-end-column="17" />
@@ -1044,7 +919,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/redis/k8s-redis-cluster-pro.yml">
+    <entry file="file://$PROJECT_DIR$/redis/k8s-redis-cluster-pro.yaml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="607">
           <caret line="122" column="0" lean-forward="true" selection-start-line="122" selection-start-column="0" selection-end-line="122" selection-end-column="0" />
@@ -1052,7 +927,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/redis/k8s-redis-single-pro.yml">
+    <entry file="file://$PROJECT_DIR$/redis/k8s-redis-single-pro.yaml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="607">
           <caret line="114" column="0" lean-forward="false" selection-start-line="114" selection-start-column="0" selection-end-line="114" selection-end-column="0" />
@@ -1060,7 +935,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/rocketmq/k8s-2m-2s-sync-pro.yml">
+    <entry file="file://$PROJECT_DIR$/rocketmq/k8s-2m-2s-sync-pro.yaml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="607">
           <caret line="519" column="0" lean-forward="true" selection-start-line="519" selection-start-column="0" selection-end-line="519" selection-end-column="0" />
@@ -1084,7 +959,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/rocketmq/k8s-2m-2s-sync-test.yml">
+    <entry file="file://$PROJECT_DIR$/rocketmq/k8s-2m-2s-sync-test.yaml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="256">
           <caret line="506" column="25" lean-forward="true" selection-start-line="506" selection-start-column="25" selection-end-line="506" selection-end-column="25" />
@@ -1110,8 +985,179 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/rocketmq/set-jvm.sh">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-450">
-          <caret line="9" column="12" lean-forward="true" selection-start-line="9" selection-start-column="12" selection-end-line="9" selection-end-column="12" />
+        <state relative-caret-position="306">
+          <caret line="37" column="0" lean-forward="true" selection-start-line="37" selection-start-column="0" selection-end-line="37" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/redis/README.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="266">
+            <caret line="16" column="0" lean-forward="true" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
+            <folding />
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/zipkinserver/rancher-compose.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="216">
+          <caret line="8" column="25" lean-forward="false" selection-start-line="8" selection-start-column="25" selection-end-line="8" selection-end-column="25" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/zipkinserver/start.sh">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="27">
+          <caret line="1" column="0" lean-forward="true" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/zipkinserver/k8s-zipkin-test.yaml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="335">
+          <caret line="32" column="24" lean-forward="true" selection-start-line="32" selection-start-column="24" selection-end-line="32" selection-end-column="24" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/zipkinserver/k8s-zipkin-pro.yaml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="81">
+          <caret line="3" column="20" lean-forward="true" selection-start-line="3" selection-start-column="20" selection-end-line="3" selection-end-column="20" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/zipkinserver/docker-compose.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="351">
+          <caret line="13" column="0" lean-forward="false" selection-start-line="13" selection-start-column="0" selection-end-line="13" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/zipkinserver/docker-zipkin-server">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="405">
+          <caret line="15" column="11" lean-forward="true" selection-start-line="15" selection-start-column="11" selection-end-line="15" selection-end-column="11" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/eureka/start.sh">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/eureka/k8s-eureka-pro.yaml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="378">
+          <caret line="49" column="2" lean-forward="true" selection-start-line="49" selection-start-column="2" selection-end-line="49" selection-end-column="2" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/eureka/k8s-eureka-test.yaml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="621">
+          <caret line="37" column="28" lean-forward="false" selection-start-line="37" selection-start-column="16" selection-end-line="37" selection-end-column="28" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/eureka/eureka.sh">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/eureka/eureka.yaml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1015">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/eureka/eureka-dockerfile">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/filebeat-del-log/start.sh">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/filebeat-del-log/delete_log.sh">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="162">
+          <caret line="6" column="6" lean-forward="false" selection-start-line="6" selection-start-column="6" selection-end-line="6" selection-end-column="11" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dockerfile-jdk-shanghai">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/filebeat-del-log/deletelog-pro.yaml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="378">
+          <caret line="28" column="19" lean-forward="false" selection-start-line="28" selection-start-column="19" selection-end-line="28" selection-end-column="19" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/filebeat-del-log/deletelog-test.yaml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="470">
+          <caret line="28" column="19" lean-forward="false" selection-start-line="28" selection-start-column="19" selection-end-line="28" selection-end-column="19" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/filebeat-del-log/dockerfile">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/rocketmq/rocketmq-acl.yaml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="108">
+          <caret line="4" column="21" lean-forward="false" selection-start-line="4" selection-start-column="21" selection-end-line="4" selection-end-column="21" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/kafka/kafka-shanghai">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="243">
+          <caret line="9" column="0" lean-forward="true" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
           <folding />
         </state>
       </provider>

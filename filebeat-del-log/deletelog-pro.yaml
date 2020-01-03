@@ -1,0 +1,44 @@
+apiVersion: extensions/v1beta1
+kind: DaemonSet
+metadata:
+  name: delete-log
+  namespace: kube-system
+ 
+spec:
+  revisionHistoryLimit: 3
+  selector:
+    matchLabels:
+      node-delete-log: delete-log
+  template:
+    metadata:
+      labels:
+        node-delete-log: delete-log
+    spec:
+      containers:
+      - name: delete-log
+        env:
+         - name: LOG_RETAIN_DAYS
+           value: 7
+        image: 172.16.43.34/public/deletelogjob:1.0
+        imagePullPolicy: Always
+        resources:
+          limits:
+            cpu: 50m
+            memory: 100Mi
+          requests:
+            cpu: 50m
+            memory: 100Mi
+        volumeMounts:
+        - mountPath: /var/applog
+          name: var-log
+      volumes:
+      - hostPath:
+          path: /var/log
+          type: ""
+        name: var-log
+      
+  templateGeneration: 4
+  updateStrategy:
+    rollingUpdate:
+      maxUnavailable: 1
+    type: RollingUpdate

@@ -1,0 +1,91 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{APP_NAME}}-service-internal
+  labels:
+    app: {{APP_NAME}}-service-internal
+  namespace: default
+spec:
+  clusterIP: None
+  ports:
+  - port: 8080
+    protocol: TCP
+    targetPort: 8080
+  selector:
+    app: {{APP_NAME}}
+  type: ClusterIP
+
+---
+
+apiVersion: apps/v1beta1
+kind: StatefulSet
+metadata:
+  name: {{APP_NAME}}
+spec:
+  selector:
+    matchLabels:
+      app: {{APP_NAME}}
+  serviceName: {{APP_NAME}}-service-internal
+  replicas: 3
+  template:
+    metadata:
+      labels:
+        app: {{APP_NAME}}
+    spec:
+      terminationGracePeriodSeconds: 10
+      containers:
+      - env:
+        - name: MY_NODE_NAME
+          valueFrom:
+            fieldRef:
+              fieldPath: spec.nodeName
+        - name: MY_POD_NAME
+          valueFrom:
+            fieldRef:
+              fieldPath: metadata.name
+        - name: MY_POD_NAMESPACE
+          valueFrom:
+            fieldRef:
+              fieldPath: metadata.namespace
+        - name: EUREKA_URL_LIST
+          value: http://172.16.58.66:8080/eureka,http://172.16.58.67:8080/eureka,http://172.16.58.68:8080/eureka
+        - name: MY_IN_SERVICE_NAME
+          value: {{APP_NAME}}-service-internal
+        - name: EUREKA_APPLICATION_NAME
+          value: "eureka"
+        - name: EUREKA_REPLICAS
+          value: "3"
+        image: 172.16.43.34/public/eureka:1.0
+        imagePullPolicy: Always
+        name: eureka-container
+        ports:
+        - containerPort: 8080
+          protocol: TCP
+        resources:
+            limits:
+              cpu: '1'
+              memory: '1073741824'
+            requests:
+              cpu: '1'
+              memory: '1073741824'
+        livenessProbe:
+            httpGet:
+              path: /actuator/health
+              port: 8080
+              scheme: HTTP
+            initialDelaySeconds: 1
+            timeoutSeconds: 2
+            periodSeconds: 30
+            successThreshold: 1
+            failureThreshold: 3
+        readinessProbe:
+            httpGet:
+              path: /actuator/health
+              port: 8080
+              scheme: HTTP
+            initialDelaySeconds: 1
+            timeoutSeconds: 2
+            periodSeconds: 30
+            successThreshold: 1
+            failureThreshold: 3
+

@@ -10,7 +10,7 @@ RUN chmod +x /docker-entrypoint.sh
 
 ENTRYPOINT ["/docker-entrypoint.sh"]
 
+CMD ["java","-jar","-Xms$XMX","-Xmx$XMX","-Xss256k","-Xmn500m","-XX:-UseGCOverheadLimit","-XX:+HeapDumpOnOutOfMemoryError","/zipkin-server.jar"]
 
-CMD [ "java", "/redis.conf" ]
 
 EXPOSE 9411
