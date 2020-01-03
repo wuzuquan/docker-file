@@ -1,0 +1,519 @@
+kind: StatefulSet
+apiVersion: apps/v1
+metadata:
+  name: {{APP_NAME}}-namesrv1
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      dce.daocloud.io/component: {{APP_NAME}}-namesrv1
+  template:
+    metadata:
+      name: {{APP_NAME}}-namesrv1
+      labels:
+        dce.daocloud.io/app: {{APP_NAME}}-namesrv1
+        dce.daocloud.io/component: {{APP_NAME}}-namesrv1
+
+    spec:
+      containers:
+        - name: rocketmqnode
+          image: '172.16.43.34/public/rocketmq-namesrv:4.6.0'
+          env:
+            - name: MEMORY
+              value: "-Xms2G -Xmx2G -Xmn1G"
+          resources:
+            limits:
+              cpu: 1
+              memory: 2Gi
+            requests:
+              cpu: 1
+              memory: 2Gi
+          livenessProbe:
+            tcpSocket:
+              port: 9876
+            initialDelaySeconds: 60
+            timeoutSeconds: 1
+            periodSeconds: 5
+            successThreshold: 1
+            failureThreshold: 3
+          readinessProbe:
+            tcpSocket:
+              port: 9876
+            initialDelaySeconds: 60
+            timeoutSeconds: 1
+            periodSeconds: 5
+            successThreshold: 1
+            failureThreshold: 3
+          imagePullPolicy: Always
+          securityContext:
+            privileged: true
+            readOnlyRootFilesystem: false
+          tty: true
+
+  podManagementPolicy: OrderedReady
+  serviceName: {{APP_NAME}}-namesrv1
+  updateStrategy:
+    type: RollingUpdate
+    rollingUpdate:
+      partition: 0
+  revisionHistoryLimit: 3
+---
+
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{APP_NAME}}-service-namesrv1
+  labels:
+    dce.daocloud.io/app: {{APP_NAME}}
+spec:
+  ports:
+    - name: servicename
+      protocol: TCP
+      port: 9876
+      targetPort: 9876
+  selector:
+    dce.daocloud.io/component: {{APP_NAME}}-namesrv1
+  type: ClusterIP
+  clusterIP: None
+  sessionAffinity: None
+
+---
+
+kind: StatefulSet
+apiVersion: apps/v1
+metadata:
+  name: {{APP_NAME}}-namesrv2
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      dce.daocloud.io/component: {{APP_NAME}}-namesrv2
+  template:
+    metadata:
+      name: {{APP_NAME}}-namesrv2
+      labels:
+        dce.daocloud.io/app: {{APP_NAME}}-namesrv2
+        dce.daocloud.io/component: {{APP_NAME}}-namesrv2
+
+    spec:
+      containers:
+        - name: rocketmqnode
+          image: '172.16.43.34/public/rocketmq-namesrv:4.6.0'
+          env:
+            - name: MEMORY
+              value: "-Xms2G -Xmx2G -Xmn1G"
+          resources:
+            limits:
+              cpu: 1
+              memory: 2Gi
+            requests:
+              cpu: 1
+              memory: 2Gi
+          livenessProbe:
+            tcpSocket:
+              port: 9876
+            initialDelaySeconds: 60
+            timeoutSeconds: 1
+            periodSeconds: 5
+            successThreshold: 1
+            failureThreshold: 3
+          readinessProbe:
+            tcpSocket:
+              port: 9876
+            initialDelaySeconds: 60
+            timeoutSeconds: 1
+            periodSeconds: 5
+            successThreshold: 1
+            failureThreshold: 3
+          imagePullPolicy: Always
+          securityContext:
+            privileged: true
+            readOnlyRootFilesystem: false
+          tty: true
+  podManagementPolicy: OrderedReady
+  serviceName: {{APP_NAME}}-namesrv2
+  updateStrategy:
+    type: RollingUpdate
+    rollingUpdate:
+      partition: 0
+  revisionHistoryLimit: 3
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{APP_NAME}}-service-namesrv2
+  labels:
+    dce.daocloud.io/app: {{APP_NAME}}
+spec:
+  ports:
+    - name: servicename
+      protocol: TCP
+      port: 9876
+      targetPort: 9876
+  selector:
+    dce.daocloud.io/component: {{APP_NAME}}-namesrv2
+  type: ClusterIP
+  clusterIP: None
+  sessionAffinity: None
+
+---
+kind: StatefulSet
+apiVersion: apps/v1
+metadata:
+  name: {{APP_NAME}}-broker-a
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      dce.daocloud.io/component: {{APP_NAME}}-broker-a
+  template:
+    metadata:
+      name: {{APP_NAME}}-broker-a
+      labels:
+        dce.daocloud.io/app: {{APP_NAME}}-broker-a
+        dce.daocloud.io/component: {{APP_NAME}}-broker-a
+
+    spec:
+      containers:
+        - name: rocketmqnode
+          image: '172.16.43.34/public/rocketmq-broker:4.6.0'
+          volumeMounts:
+            - name: datadir
+              mountPath: /rocketmqdata
+            - name: plainacl
+              mountPath: /rocketmq/rocketmq-home/conf/acl
+          env:
+            - name: MEMORY
+              value: "-Xms2G -Xmx2G -Xmn1G"
+            - name: NAMESRV
+              value: "{{APP_NAME}}-service-namesrv1:9876;{{APP_NAME}}-service-namesrv2:9876"
+            - name: POD_IP
+              valueFrom:
+                fieldRef:
+                  fieldPath: status.podIP
+          args: ["sh bin/mqbroker -c ./conf/2m-2s-sync/broker-a.properties"]
+          resources:
+            limits:
+              cpu: 1
+              memory: 3Gi
+            requests:
+              cpu: 1
+              memory: 3Gi
+          livenessProbe:
+            tcpSocket:
+              port: 10909
+            initialDelaySeconds: 60
+            timeoutSeconds: 1
+            periodSeconds: 5
+            successThreshold: 1
+            failureThreshold: 3
+          readinessProbe:
+            tcpSocket:
+              port: 10909
+            initialDelaySeconds: 60
+            timeoutSeconds: 1
+            periodSeconds: 5
+            successThreshold: 1
+            failureThreshold: 3
+          imagePullPolicy: Always
+          securityContext:
+            privileged: true
+            readOnlyRootFilesystem: false
+          tty: true
+      volumes:
+       - name: plainacl
+         configMap:
+           name: rocketmq-acl
+           items:
+            - key: plain_acl.yml
+              path: plain_acl.yml
+  volumeClaimTemplates:
+    - metadata:
+        name: datadir
+      spec:
+        accessModes:
+          - ReadWriteOnce
+        resources:
+          requests:
+            storage: '5Gi'
+        storageClassName: huafa-rbd
+        volumeMode: Filesystem
+  podManagementPolicy: OrderedReady
+  serviceName: {{APP_NAME}}-broker-a
+  updateStrategy:
+    type: RollingUpdate
+    rollingUpdate:
+      partition: 0
+  revisionHistoryLimit: 3
+
+---
+kind: StatefulSet
+apiVersion: apps/v1
+metadata:
+  name: {{APP_NAME}}-broker-a-s
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      dce.daocloud.io/component: {{APP_NAME}}-broker-a-s
+  template:
+    metadata:
+      name: {{APP_NAME}}-broker-a-s
+      labels:
+        dce.daocloud.io/app: {{APP_NAME}}-broker-a-s
+        dce.daocloud.io/component: {{APP_NAME}}-broker-a-s
+
+    spec:
+      containers:
+        - name: rocketmqnode
+          image: '172.16.43.34/public/rocketmq-broker:4.6.0'
+          volumeMounts:
+            - name: datadir
+              mountPath: /rocketmqdata
+            - name: plainacl
+              mountPath: /rocketmq/rocketmq-home/conf/acl/
+          env:
+            - name: MEMORY
+              value: "-Xms2G -Xmx2G -Xmn1G"
+            - name: NAMESRV
+              value: "{{APP_NAME}}-service-namesrv1:9876;{{APP_NAME}}-service-namesrv2:9876"
+            - name: POD_IP
+              valueFrom:
+                fieldRef:
+                  fieldPath: status.podIP
+          args: ["sh bin/mqbroker -c ./conf/2m-2s-sync/broker-a-s.properties"]
+          resources:
+            limits:
+              cpu: 1
+              memory: 3Gi
+            requests:
+              cpu: 1
+              memory: 3Gi
+          livenessProbe:
+            tcpSocket:
+              port: 10909
+            initialDelaySeconds: 60
+            timeoutSeconds: 1
+            periodSeconds: 5
+            successThreshold: 1
+            failureThreshold: 3
+          readinessProbe:
+            tcpSocket:
+              port: 10909
+            initialDelaySeconds: 60
+            timeoutSeconds: 1
+            periodSeconds: 5
+            successThreshold: 1
+            failureThreshold: 3
+          imagePullPolicy: Always
+          securityContext:
+            privileged: true
+            readOnlyRootFilesystem: false
+          tty: true
+      volumes:
+       - name: plainacl
+         configMap:
+           name: rocketmq-acl
+           items:
+            - key: plain_acl.yml
+              path: plain_acl.yml
+  volumeClaimTemplates:
+    - metadata:
+        name: datadir
+      spec:
+        accessModes:
+          - ReadWriteOnce
+        resources:
+          requests:
+            storage: '5Gi'
+        storageClassName: huafa-rbd
+        volumeMode: Filesystem
+  podManagementPolicy: OrderedReady
+  serviceName: {{APP_NAME}}-broker-a-s
+  updateStrategy:
+    type: RollingUpdate
+    rollingUpdate:
+      partition: 0
+  revisionHistoryLimit: 3
+
+---
+kind: StatefulSet
+apiVersion: apps/v1
+metadata:
+  name: {{APP_NAME}}-broker-b
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      dce.daocloud.io/component: {{APP_NAME}}-broker-b
+  template:
+    metadata:
+      name: {{APP_NAME}}-broker-b
+      labels:
+        dce.daocloud.io/app: {{APP_NAME}}-broker-b
+        dce.daocloud.io/component: {{APP_NAME}}-broker-b
+
+    spec:
+      containers:
+        - name: rocketmqnode
+          image: '172.16.43.34/public/rocketmq-broker:4.6.0'
+          volumeMounts:
+            - name: datadir
+              mountPath: /rocketmqdata
+            - name: plainacl
+              mountPath: /rocketmq/rocketmq-home/conf/acl
+          env:
+            - name: MEMORY
+              value: "-Xms2G -Xmx2G -Xmn1G"
+            - name: NAMESRV
+              value: "{{APP_NAME}}-service-namesrv1:9876;{{APP_NAME}}-service-namesrv2:9876"
+            - name: POD_IP
+              valueFrom:
+                fieldRef:
+                  fieldPath: status.podIP
+          args: ["sh bin/mqbroker -c ./conf/2m-2s-sync/broker-b.properties"]
+          resources:
+            limits:
+              cpu: 1
+              memory: 3Gi
+            requests:
+              cpu: 1
+              memory: 3Gi
+          livenessProbe:
+            tcpSocket:
+              port: 10909
+            initialDelaySeconds: 60
+            timeoutSeconds: 1
+            periodSeconds: 5
+            successThreshold: 1
+            failureThreshold: 3
+          readinessProbe:
+            tcpSocket:
+              port: 10909
+            initialDelaySeconds: 60
+            timeoutSeconds: 1
+            periodSeconds: 5
+            successThreshold: 1
+            failureThreshold: 3
+          imagePullPolicy: Always
+          securityContext:
+            privileged: true
+            readOnlyRootFilesystem: false
+          tty: true
+      volumes:
+       - name: plainacl
+         configMap:
+           name: rocketmq-acl
+           items:
+            - key: plain_acl.yml
+              path: plain_acl.yml
+  volumeClaimTemplates:
+    - metadata:
+        name: datadir
+      spec:
+        accessModes:
+          - ReadWriteOnce
+        resources:
+          requests:
+            storage: '5Gi'
+        storageClassName: huafa-rbd
+        volumeMode: Filesystem
+  podManagementPolicy: OrderedReady
+  serviceName: {{APP_NAME}}-broker-b
+  updateStrategy:
+    type: RollingUpdate
+    rollingUpdate:
+      partition: 0
+  revisionHistoryLimit: 3
+
+---
+kind: StatefulSet
+apiVersion: apps/v1
+metadata:
+  name: {{APP_NAME}}-broker-b-s
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      dce.daocloud.io/component: {{APP_NAME}}-broker-b-s
+  template:
+    metadata:
+      name: {{APP_NAME}}-broker-b-s
+      labels:
+        dce.daocloud.io/app: {{APP_NAME}}-broker-b-s
+        dce.daocloud.io/component: {{APP_NAME}}-broker-b-s
+
+    spec:
+      containers:
+        - name: rocketmqnode
+          image: '172.16.43.34/public/rocketmq-broker:4.6.0'
+          volumeMounts:
+            - name: datadir
+              mountPath: /rocketmqdata
+            - name: plainacl
+              mountPath: /rocketmq/rocketmq-home/conf/acl
+          env:
+            - name: MEMORY
+              value: "-Xms2G -Xmx2G -Xmn1G"
+            - name: NAMESRV
+              value: "{{APP_NAME}}-service-namesrv1:9876;{{APP_NAME}}-service-namesrv2:9876"
+            - name: POD_IP
+              valueFrom:
+                fieldRef:
+                  fieldPath: status.podIP
+          args: ["sh bin/mqbroker -c ./conf/2m-2s-sync/broker-b-s.properties"]
+          resources:
+            limits:
+              cpu: 1
+              memory: 3Gi
+            requests:
+              cpu: 1
+              memory: 3Gi
+          livenessProbe:
+            tcpSocket:
+              port: 10909
+            initialDelaySeconds: 60
+            timeoutSeconds: 1
+            periodSeconds: 5
+            successThreshold: 1
+            failureThreshold: 3
+          readinessProbe:
+            tcpSocket:
+              port: 10909
+            initialDelaySeconds: 60
+            timeoutSeconds: 1
+            periodSeconds: 5
+            successThreshold: 1
+            failureThreshold: 3
+          imagePullPolicy: Always
+          securityContext:
+            privileged: true
+            readOnlyRootFilesystem: false
+          tty: true
+      volumes:
+       - name: plainacl
+         configMap:
+           name: rocketmq-acl
+           items:
+            - key: plain_acl.yml
+              path: plain_acl.yml
+  volumeClaimTemplates:
+    - metadata:
+        name: datadir
+      spec:
+        accessModes:
+          - ReadWriteOnce
+        resources:
+          requests:
+            storage: '5Gi'
+        storageClassName: huafa-rbd
+        volumeMode: Filesystem
+  podManagementPolicy: OrderedReady
+  serviceName: {{APP_NAME}}-broker-b-s
+  updateStrategy:
+    type: RollingUpdate
+    rollingUpdate:
+      partition: 0
+  revisionHistoryLimit: 3

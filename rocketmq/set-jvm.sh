@@ -2,6 +2,7 @@
 
 sed  -i  "s/-Xms8g -Xmx8g -Xmn4g/$MEMORY/g" bin/runbroker.sh
 sed  -i  "s/jre\/lib\/ext/lib\/ext/g" bin/runbroker.sh
+
 echo $MEMORY
 
 #ipaddr=$(ifconfig eth0|grep 'inet addr:'|awk -F':' '{print $2}'|awk '{print $1}')
@@ -36,5 +37,8 @@ echo vm.swappiness=0 >> /etc/sysctl.conf
 echo vm.min_free_kbytes=5000 >>/etc/sysctl.conf
 
 #mkdir /rocketmq/store/consumequeue
+rm -f /rocketmq/rocketmq-home/conf/plain_acl.yml
+mkdir -p /rocketmq/rocketmq-home/conf/acl/
+ln -s /rocketmq/rocketmq-home/conf/acl/plain_acl.yml /rocketmq/rocketmq-home/conf/plain_acl.yml
 
 eval "$@"

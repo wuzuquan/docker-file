@@ -1,0 +1,122 @@
+kind: StatefulSet
+apiVersion: apps/v1
+metadata:
+  name: {{APP_NAME}}
+  labels:
+    dce.daocloud.io/app: {{APP_NAME}}
+    dce.daocloud.io/component: {{APP_NAME}}-redis-cluster
+spec:
+  replicas: 6
+  selector:
+    matchLabels:
+      dce.daocloud.io/component: {{APP_NAME}}-redis-cluster
+  template:
+    metadata:
+      name: {{APP_NAME}}-redis-cluster
+      labels:
+        dce.daocloud.io/app: {{APP_NAME}}
+        dce.daocloud.io/component: {{APP_NAME}}-redis-cluster
+
+    spec:
+      containers:
+        - name: {{APP_NAME}}-redis-node
+          image: '172.16.44.49/public/redis-cluster:5.0-shanghai'
+          volumeMounts:
+            - name: datadir
+              mountPath: /redis/data
+          env:
+            - name: REDISPASSWORD
+              value: {{REDISPASSWORD}}
+            - name: MAXMEM
+              value: {{MAXMEM}}
+          resources:
+            limits:
+              cpu: 500m
+              memory: 524288k
+            requests:
+              cpu: 300m
+              memory: 524288k
+          livenessProbe:
+            tcpSocket:
+              port: 6000
+            initialDelaySeconds: 3
+            timeoutSeconds: 1
+            periodSeconds: 5
+            successThreshold: 1
+            failureThreshold: 3
+          readinessProbe:
+            tcpSocket:
+              port: 6000
+            initialDelaySeconds: 3
+            timeoutSeconds: 1
+            periodSeconds: 5
+            successThreshold: 1
+            failureThreshold: 3
+          imagePullPolicy: Always
+          securityContext:
+            privileged: true
+            readOnlyRootFilesystem: false
+          tty: true
+        - name: redis-exporter
+          image: 172.16.44.49/public/redis-exporter:5.0
+          resources:
+            requests:
+              cpu: 50m
+              memory: 50Mi
+          env:
+            - name: REDIS_ADDR
+              value: redis://localhost:6000
+          ports:
+           - containerPort: 9121
+      restartPolicy: Always
+      dnsPolicy: ClusterFirst
+      securityContext:
+        seLinuxOptions:
+          level: 's0:c123,c456'
+        supplementalGroups:
+          - 5678
+        fsGroup: 1234
+  volumeClaimTemplates:
+    - metadata:
+        name: datadir
+        creationTimestamp: null
+      spec:
+        accessModes:
+          - ReadWriteOnce
+        resources:
+          requests:
+            storage: '547483648'
+        storageClassName: huafa
+        volumeMode: Filesystem
+  podManagementPolicy: OrderedReady
+  serviceName: {{APP_NAME}}-service-name
+  updateStrategy:
+    type: RollingUpdate
+    rollingUpdate:
+      partition: 0
+  revisionHistoryLimit: 3
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{APP_NAME}}-service
+  labels:
+    dce.daocloud.io/app: {{APP_NAME}}
+  annotations:
+    io.daocloud.dce.serviceSelectorType: service
+    prometheus.io/metrics-enabled: 'true'
+    prometheus.io/metrics-path: /metrics
+    prometheus.io/metrics-port: '9121'
+spec:
+  ports:
+    - name: {{APP_NAME}}-service-6000
+      protocol: TCP
+      port: 6000
+      targetPort: 6000
+  selector:
+    dce.daocloud.io/component: {{APP_NAME}}-redis-cluster
+  type: ClusterIP
+  clusterIP: None
+  sessionAffinity: None
+

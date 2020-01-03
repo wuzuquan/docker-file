@@ -1,0 +1,114 @@
+kind: StatefulSet
+apiVersion: apps/v1
+metadata:
+  name: {{APP_NAME}}
+
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      dce.daocloud.io/app: {{APP_NAME}}
+      dce.daocloud.io/component: {{APP_NAME}}-service
+  template:
+    metadata:
+      labels:
+        dce.daocloud.io/app: {{APP_NAME}}
+        dce.daocloud.io/component: {{APP_NAME}}-service
+    spec:
+      containers:
+        - name: {{APP_NAME}}-pod
+          image: '172.16.43.34/public/redis-single:5.0-shanghai'
+          resources:
+            limits:
+              cpu: '1'
+              memory: '1147483648'
+            requests:
+              cpu: 600m
+              memory: '847483648'
+          volumeMounts:
+            - name: redissingle
+              mountPath: /redis/data
+          livenessProbe:
+            tcpSocket:
+              port: 6000
+            initialDelaySeconds: 5
+            timeoutSeconds: 2
+            periodSeconds: 3
+            successThreshold: 1
+            failureThreshold: 3
+          readinessProbe:
+            tcpSocket:
+              port: 6000
+            initialDelaySeconds: 5
+            timeoutSeconds: 2
+            periodSeconds: 3
+            successThreshold: 1
+            failureThreshold: 3
+          imagePullPolicy: Always
+          securityContext:
+            privileged: true
+          tty: true
+
+        - name: redis-exporter
+          image: 172.16.44.49/public/redis-exporter:5.0
+          resources:
+            requests:
+              cpu: 100m
+              memory: 100Mi
+          env:
+            - name: NAMESPACE
+              valueFrom:
+                fieldRef:
+                  fieldPath: metadata.namespace
+            - name: REDIS_ADDR
+              value: redis://localhost:6000
+          ports:
+           - containerPort: 9121
+      restartPolicy: Always
+      terminationGracePeriodSeconds: 30
+      dnsPolicy: ClusterFirst
+      securityContext: {}
+      schedulerName: default-scheduler
+  volumeClaimTemplates:
+    - metadata:
+        name: redissingle
+      spec:
+        accessModes:
+          - ReadWriteOnce
+        resources:
+          requests:
+            storage: '1073741824'
+        storageClassName: huafa-rbd
+        volumeMode: Filesystem
+  serviceName: redis-single-service-headless
+  podManagementPolicy: OrderedReady
+  updateStrategy:
+    type: RollingUpdate
+    rollingUpdate:
+      partition: 0
+  revisionHistoryLimit: 10
+
+
+---
+
+kind: Service
+apiVersion: v1
+metadata:
+  name: {{APP_NAME}}-service
+  annotations:
+    io.daocloud.dce.serviceSelectorType: service
+    prometheus.io/metrics-enabled: 'true'
+    prometheus.io/metrics-path: /metrics
+    prometheus.io/metrics-port: '9121'
+spec:
+  ports:
+    - name: {{APP_NAME}}-service-6000
+      protocol: TCP
+      port: 6000
+      targetPort: 6000
+  selector:
+    dce.daocloud.io/app: {{APP_NAME}}
+    dce.daocloud.io/component: {{APP_NAME}}-service
+  clusterIP: None
+  type: ClusterIP
+
