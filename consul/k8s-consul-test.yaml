@@ -1,0 +1,110 @@
+kind: StatefulSet
+apiVersion: apps/v1
+metadata:
+  name: {{APP_NAME}}
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      dce.daocloud.io/component: {{APP_NAME}}-node
+  template:
+    metadata:
+      name: {{APP_NAME}}-node
+      labels:
+        dce.daocloud.io/app: {{APP_NAME}}
+        dce.daocloud.io/component: {{APP_NAME}}-node
+
+    spec:
+      containers:
+        - name: {{APP_NAME}}-redis-node
+          image: '172.16.44.49/public/consul:1.15'
+          volumeMounts:
+            - name: datadir
+              mountPath: /consul
+
+          resources:
+            limits:
+              cpu: 500m
+              memory: 524288k
+            requests:
+              cpu: 300m
+              memory: 524288k
+          livenessProbe:
+            tcpSocket:
+              port: 8300
+            initialDelaySeconds: 3
+            timeoutSeconds: 1
+            periodSeconds: 5
+            successThreshold: 1
+            failureThreshold: 3
+          readinessProbe:
+            tcpSocket:
+              port: 8300
+            initialDelaySeconds: 3
+            timeoutSeconds: 1
+            periodSeconds: 5
+            successThreshold: 1
+            failureThreshold: 3
+          imagePullPolicy: Always
+          tty: true
+  volumeClaimTemplates:
+    - metadata:
+        name: datadir
+      spec:
+        accessModes:
+          - ReadWriteOnce
+        resources:
+          requests:
+            storage: '547483648'
+        storageClassName: huafa
+        volumeMode: Filesystem
+  podManagementPolicy: OrderedReady
+  serviceName: {{APP_NAME}}-service-name
+  updateStrategy:
+    type: RollingUpdate
+    rollingUpdate:
+      partition: 0
+  revisionHistoryLimit: 3
+
+---
+kind: Ingress
+apiVersion: extensions/v1beta1
+metadata:
+  name: {{APP_NAME}}-lb
+  labels:
+    dce.daocloud.io/app: {{APP_NAME}}
+  annotations:
+    nginx.ingress.kubernetes.io/use-port-in-redirects: 'true'
+spec:
+  rules:
+    - host: {{APP_NAME}}.paasdev.huafagroup.com
+      http:
+        paths:
+          - path: /
+            backend:
+              serviceName: {{APP_NAME}}-service
+              servicePort: 8500
+
+---
+
+kind: Service
+apiVersion: v1
+metadata:
+  name: {{APP_NAME}}-service
+  labels:
+    dce.daocloud.io/app: {{APP_NAME}}
+  annotations:
+    io.daocloud.dce.serviceSelectorType: service
+spec:
+  ports:
+    - name: {{APP_NAME}}-service-8500
+      protocol: TCP
+      port: 8500
+      targetPort: 8500
+  selector:
+    dce.daocloud.io/app: consul
+    dce.daocloud.io/component: consul-node
+  clusterIP: None
+  type: ClusterIP
+  sessionAffinity: None
+

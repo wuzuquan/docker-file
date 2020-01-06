@@ -22,12 +22,15 @@ filebeat.inputs:
     topic: nginx-log
     level: info
   processors:
-  - drop_event:
-     when:
-        or:
-        - and:
-          - contains:
-            your_filed_name: "KeepAliveClient"
+    - drop_event:
+       when:
+          or:
+            - contains:
+                message: "kibana"
+            - contains:
+                message: "KeepAliveClient"
+            - contains:
+                message: "TCP200000"
 
 - type: docker
   containers.ids:

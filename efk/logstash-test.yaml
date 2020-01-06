@@ -1,0 +1,160 @@
+input {
+  # 容器日志发送到kafka
+  kafka {
+    bootstrap_servers => "kafka-0.dao-efk.svc:9092,kafka-1.dao-efk.svc:9092,kafka-2.dao-efk.svc:9092"
+    topics_pattern => "containers-log"
+    client_id => "es_c"
+    consumer_threads => 3
+    auto_offset_reset => "latest"
+    decorate_events => true
+    codec => json {
+      charset => "UTF-8"
+    }
+    add_field =>{"my_topic"=>"containers-log"}
+  }
+
+  # 应用app-采集 发送到kafka
+  kafka{
+  bootstrap_servers => "kafka-0.dao-efk.svc:9092,kafka-1.dao-efk.svc:9092,kafka-2.dao-efk.svc:9092"
+      topics_pattern => "app-log"
+    client_id => "es_a"
+    consumer_threads => 3
+    auto_offset_reset => "latest"
+    decorate_events => true
+    codec => json {
+      charset => "UTF-8"
+    }
+    add_field =>{"my_topic"=>"app-log"}
+  }
+  
+   # 应用 app-to 发送到kafka
+  kafka{
+  bootstrap_servers => "kafka-0.dao-efk.svc:9092,kafka-1.dao-efk.svc:9092,kafka-2.dao-efk.svc:9092"
+      topics_pattern => "app-to-kafka"
+    client_id => "es_at"
+    consumer_threads => 3
+    auto_offset_reset => "latest"
+    decorate_events => true
+    codec => json {
+      charset => "UTF-8"
+    }
+    add_field =>{"my_topic"=>"app-to-kafka"}
+  }
+
+  # 应用 nginx 发送到kafka
+  kafka{
+  bootstrap_servers => "kafka-0.dao-efk.svc:9092,kafka-1.dao-efk.svc:9092,kafka-2.dao-efk.svc:9092"
+      topics_pattern => "nginx-log"
+    client_id => "es_n"
+    consumer_threads => 3
+    auto_offset_reset => "latest"
+    decorate_events => true
+    codec => json {
+      charset => "UTF-8"
+    }
+    add_field =>{"my_topic"=>"nginx-log"}
+
+  }
+
+}
+
+
+
+filter {
+      #容器日志处理
+     if [my_topic]=='containers-log'{
+
+        if [kubernetes][namespace] == "default" or [kubernetes][namespace] == "kube-system" or [kubernetes][namespace] == "kube-public" or [kubernetes][namespace] == "kube-node-lease" or [kubernetes][namespace] == "dce-system" or [kubernetes][namespace] == "istio-system" or [kubernetes][namespace] == "monitoring" or [kubernetes][namespace] == "dao-efk" or [kubernetes][namespace] == "dao-dcs" {
+           drop {
+            percentage => 100
+         }
+       }
+
+      ruby {
+        code => "
+        event.set('local_date', event.get('@timestamp'))
+        app_name = event.get('[kubernetes][labels][dce_daocloud_io/app]')
+          if app_name
+            event.set('app_name', app_name)
+          else
+            name = event.get('[kubernetes][replicaset][name]')
+          if name
+            indexn = name.rindex('-') - 1
+            event.set('app_name', name[0..indexn])
+          else
+            event.set('app_name', 'huafa-app')
+        end
+      end
+      "
+  }
+  
+    mutate {
+      add_field => {"es_index" => "%{[@metadata][topic]}-%{[kubernetes][namespace]}-%{app_name}-%{+yyyy.MM.dd}"}
+      rename => ["message", "log"]
+      convert => ["local_date", "string"]
+      gsub    => ["local_date", "T([\S\s]*?)Z", ""]
+      gsub    => ["local_date", "-", "."]
+      remove_field => ["fields","my_topic"]
+     }
+  
+    json {
+      source => "message"
+      remove_field => [ "beat"]
+    }
+ }
+
+     #app日志处理
+    if [my_topic]=='app-log' {
+
+         ruby {
+            code => "
+            path = event.get('[log][file][path]')
+            paths = path.split('/')
+            event.set('business_type',paths[2])
+            indexn = paths[3].index('-')-1
+            event.set('serviceName',paths[3][0..indexn])
+            "  
+         }
+
+         mutate {
+            remove_field => ["my_topic","fields","[log][offset]","[log][file][path]","agent","[ecs][version]"]
+            add_field => {"es_index" => "%{serviceName}-%{+yyyy.MM.dd}"}
+         }
+
+        json {
+          source => "message"
+        }
+     }
+
+     #app-to-kafka日志处理
+    if [my_topic]=='app-to-kafka' {
+         mutate {
+            remove_field => ["my_topic","fields","agent","[ecs][version]"]
+            add_field => {"es_index" => "%{serviceName}-%{+yyyy.MM.dd}"}
+         }
+
+        json {
+          source => "message"
+        }
+     }
+
+  #nginx 日志处理
+  if [my_topic] =='nginx-log' {
+     
+        mutate {
+            add_field => {"es_index" => "nginx-%{+yyyy.MM.dd}"}
+            remove_field => ["my_topic","[fields][topic]","[log][offset]","[agent][version]","port","[ecs][version]"]
+            remove_field => ["port","tags","[log][file][path]"]  
+         }
+  }
+}
+
+
+output {
+       elasticsearch {
+         hosts => ["http://172.16.44.41:9200","http://172.16.44.42:9200","http://172.16.44.43:9200"]
+         index => "%{es_index}"
+         http_compression => true
+         timeout => 300
+        }
+}

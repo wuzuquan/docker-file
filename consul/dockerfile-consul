@@ -1,8 +1,10 @@
-FROM alpine:latest
+FROM 172.16.44.49/public/alpine:latest
 MAINTAINER wuzuquan
+#设置时区
+COPY shanghai.timezone  /etc/localtime
+RUN  echo 'Asia/Shanghai' >/etc/timezone
 
-RUN mkdir -p /consul/data && \
-    mkdir -p /consul/config
+RUN mkdir -p /consul/
 
 VOLUME /consul
 ADD consul /usr/bin
@@ -20,4 +22,4 @@ EXPOSE 8301 8301/udp 8302 8302/udp
 # use to interact with Consul.
 EXPOSE 8500 8600 8600/udp
 
-CMD ["consul","agent","-server","-ui", "-bootstrap-expect","3","-data-dir","/consul/data", "-client", "0.0.0.0"]
+CMD ["consul","agent","-server","-ui", "-bootstrap-expect","1","-data-dir","/consul", "-client", "0.0.0.0"]

@@ -1,5 +1,3 @@
-setup.kibana:
-  host: "http://172.16.43.31:31937"
 filebeat.inputs:
 - type: log
   paths:
@@ -25,9 +23,12 @@ filebeat.inputs:
   - drop_event:
      when:
         or:
-        - and:
           - contains:
-            your_filed_name: "KeepAliveClient"
+              message: "kibana"
+          - contains:
+              message: "KeepAliveClient"
+          - contains:
+              message: "TCP200000"
 
 - type: docker
   containers.ids:
