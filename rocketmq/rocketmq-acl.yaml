@@ -2,22 +2,97 @@ apiVersion: v1
 kind: ConfigMap
 metadata:
   name: rocketmq-acl
-  namespace: paas-dev
 data:
-  plain_acl.yml: "globalWhiteRemoteAddresses:\n\naccounts:\n\n- accessKey: auction-biz-web\n
-    \ secretKey: auction-biz-web\n  whiteRemoteAddress: \n  admin: false\n  defaultTopicPerm:
-    DENY\n  defaultGroupPerm: SUB\n  topicPerms:\n    - topicB=DENY\n    - Test=SUB\n
-    \ groupPerms:\n    - groupA=PUB\n    - groupB=PUB\n\n- accessKey: media_manage\n
-    \ secretKey: media_manage\n  whiteRemoteAddress: \n  admin: false\n  defaultTopicPerm:
-    DENY\n  defaultGroupPerm: SUB\n  topicPerms:\n    - topicB=SUB\n    - Test=SUB\n
-    \ groupPerms:\n    - groupA=PUB|SUB\n    - groupB=PUB|SUB\n\n- accessKey: test1022\n
-    \ secretKey: test1022\n  whiteRemoteAddress: \n  admin: false\n  defaultTopicPerm:
-    DENY\n  defaultGroupPerm: SUB\n  topicPerms:\n    - Test=DENY\n  groupPerms:\n
-    \   - groupA=SUB\n\n- accessKey: user-center\n  secretKey: user-center\n  whiteRemoteAddress:
-    \n  admin: false\n  defaultTopicPerm: DENY\n  defaultGroupPerm: SUB\n  topicPerms:\n
-    \   - topicB=PUB\n    - Test=PUB|SUB\n  groupPerms:\n    - groupA=SUB\n\n- accessKey:
-    wuye_middle\n  secretKey: wuye_middle\n  whiteRemoteAddress: \n  admin: false\n
-    \ defaultTopicPerm: DENY\n  defaultGroupPerm: SUB\n  topicPerms:\n    - Test=SUB\n
-    \   - topicB=SUB\n  groupPerms:\n    - groupA=PUB\n    - groupB=PUB|SUB\n\n- accessKey:
-    rocketmq2\n  secretKey: 12345678\n  whiteRemoteAddress:\n  admin: true\n"
+  plain_acl.yml: |
+     globalWhiteRemoteAddresses:
 
+     accounts:
+
+     - accessKey: auction-biz-web
+       secretKey: auction-biz-web
+       whiteRemoteAddress:
+       admin: false
+       defaultTopicPerm: DENY
+       defaultGroupPerm: SUB
+       topicPerms:
+         - topicB=DENY
+         - Test=SUB
+       groupPerms:
+         - groupA=PUB
+         - groupB=PUB
+
+     - accessKey: commission
+       secretKey: commission
+       whiteRemoteAddress:
+       admin: false
+       defaultTopicPerm: DENY
+       defaultGroupPerm: SUB
+       topicPerms:
+         - commissionTopic=SUB
+       groupPerms:
+         - commissionGroup=SUB
+
+     - accessKey: marketing
+       secretKey: marketing
+       whiteRemoteAddress:
+       admin: false
+       defaultTopicPerm: DENY
+       defaultGroupPerm: SUB
+       topicPerms:
+         - commissionTopic=PUB
+       groupPerms:
+         - commissionGroup=PUB
+
+     - accessKey: media_manage
+       secretKey: media_manage
+       whiteRemoteAddress:
+       admin: false
+       defaultTopicPerm: DENY
+       defaultGroupPerm: SUB
+       topicPerms:
+         - topicB=SUB
+         - Test=SUB
+       groupPerms:
+         - groupA=PUB|SUB
+         - groupB=PUB|SUB
+
+     - accessKey: test1022
+       secretKey: test1022
+       whiteRemoteAddress:
+       admin: false
+       defaultTopicPerm: DENY
+       defaultGroupPerm: SUB
+       topicPerms:
+         - Test=DENY
+       groupPerms:
+         - groupA=SUB
+
+     - accessKey: user-center
+       secretKey: user-center
+       whiteRemoteAddress:
+       admin: false
+       defaultTopicPerm: DENY
+       defaultGroupPerm: SUB
+       topicPerms:
+         - topicB=PUB
+         - Test=PUB|SUB
+       groupPerms:
+         - groupA=SUB
+
+     - accessKey: wuye_middle
+       secretKey: wuye_middle
+       whiteRemoteAddress:
+       admin: false
+       defaultTopicPerm: DENY
+       defaultGroupPerm: SUB
+       topicPerms:
+         - Test=SUB
+         - topicB=SUB
+       groupPerms:
+         - groupA=PUB
+         - groupB=PUB|SUB
+
+     - accessKey: rocketmq2
+       secretKey: 12345678
+       whiteRemoteAddress:
+       admin: true
