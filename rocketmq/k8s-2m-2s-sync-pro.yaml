@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: rocketmq-acl
+  name: {{APP_NAME}}-acl
 data:
   plain_acl.yml: |
      globalWhiteRemoteAddresses:
@@ -260,7 +260,7 @@ spec:
       volumes:
        - name: plainacl
          configMap:
-           name: rocketmq-acl
+           name: {{APP_NAME}}-acl
            items:
             - key: plain_acl.yml
               path: plain_acl.yml
@@ -350,7 +350,7 @@ spec:
       volumes:
        - name: plainacl
          configMap:
-           name: rocketmq-acl
+           name: {{APP_NAME}}-acl
            items:
             - key: plain_acl.yml
               path: plain_acl.yml
@@ -440,7 +440,7 @@ spec:
       volumes:
        - name: plainacl
          configMap:
-           name: rocketmq-acl
+           name: {{APP_NAME}}-acl
            items:
             - key: plain_acl.yml
               path: plain_acl.yml
@@ -530,7 +530,7 @@ spec:
       volumes:
        - name: plainacl
          configMap:
-           name: rocketmq-acl
+           name: {{APP_NAME}}-acl
            items:
             - key: plain_acl.yml
               path: plain_acl.yml
