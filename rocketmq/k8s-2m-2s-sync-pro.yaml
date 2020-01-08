@@ -31,6 +31,7 @@ data:
        # if it is admin, it could access all resources
        admin: true
 
+---
 
 kind: StatefulSet
 apiVersion: apps/v1
