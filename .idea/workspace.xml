@@ -2,21 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8c92cb99-8a53-4571-9e13-b9b2652760eb" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/consul/shanghai.timezone" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/consul/k8s-consul-pro.yaml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/consul/k8s-consul-test.yaml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/efk/filebeat-daemonset-pro.yaml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/efk/filebeat-daemonset-test.yaml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/efk/filebeat-pro.yaml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/efk/filebeat-test.yaml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/efk/logstash-pro.yaml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/efk/logstash-test.yaml" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/consul/docker-compose-pro.yml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/consul/docker-compose.yml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/consul/rancher-compose.yml" afterPath="" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/filebeat-del-log/shanghai.timezone" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/prometheus+grafana/docker-compose.yml" afterPath="$PROJECT_DIR$/prometheus+grafana/docker-compose.yml" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/consul/Dockerfile-consul" afterPath="$PROJECT_DIR$/consul/dockerfile-consul" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/efk/logstash-test.yaml" afterPath="$PROJECT_DIR$/efk/logstash-test.yaml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/filebeat-del-log/delete_log.sh" afterPath="$PROJECT_DIR$/filebeat-del-log/delete_log.sh" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/filebeat-del-log/deletelog-pro.yaml" afterPath="$PROJECT_DIR$/filebeat-del-log/deletelog-pro.yaml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/filebeat-del-log/deletelog-test.yaml" afterPath="$PROJECT_DIR$/filebeat-del-log/deletelog-test.yaml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/filebeat-del-log/dockerfile" afterPath="$PROJECT_DIR$/filebeat-del-log/dockerfile" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -27,71 +19,51 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="dockerfile-consul" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/consul/dockerfile-consul">
+      <file leaf-file-name="deletelog-test.yaml" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/filebeat-del-log/deletelog-test.yaml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="189">
+              <caret line="21" column="15" lean-forward="true" selection-start-line="21" selection-start-column="15" selection-end-line="21" selection-end-column="51" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="deletelog-pro.yaml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/filebeat-del-log/deletelog-pro.yaml">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="297">
-              <caret line="11" column="29" lean-forward="true" selection-start-line="11" selection-start-column="29" selection-end-line="11" selection-end-column="29" />
+              <caret line="25" column="20" lean-forward="true" selection-start-line="25" selection-start-column="20" selection-end-line="25" selection-end-column="20" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="k8s-consul-test.yaml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/consul/k8s-consul-test.yaml">
+      <file leaf-file-name="dockerfile-single" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/redis/dockerfile-single">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="297">
-              <caret line="42" column="34" lean-forward="true" selection-start-line="0" selection-start-column="0" selection-end-line="110" selection-end-column="0" />
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="k8s-consul-pro.yaml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/consul/k8s-consul-pro.yaml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="216">
-              <caret line="22" column="32" lean-forward="true" selection-start-line="22" selection-start-column="32" selection-end-line="22" selection-end-column="32" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="docker-compose.yml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/prometheus+grafana/docker-compose.yml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="216">
-              <caret line="8" column="18" lean-forward="true" selection-start-line="0" selection-start-column="0" selection-end-line="49" selection-end-column="28" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="filebeat-test.yaml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/efk/filebeat-test.yaml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="648">
-              <caret line="24" column="11" lean-forward="true" selection-start-line="24" selection-start-column="11" selection-end-line="24" selection-end-column="11" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="filebeat-daemonset-test.yaml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/efk/filebeat-daemonset-test.yaml">
+      <file leaf-file-name="dockerfile-cluster" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/redis/dockerfile-cluster">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="243">
-              <caret line="30" column="51" lean-forward="true" selection-start-line="30" selection-start-column="15" selection-end-line="30" selection-end-column="51" />
+              <caret line="9" column="0" lean-forward="true" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="logstash-pro.yaml" pinned="false" current-in-tab="true">
+      <file leaf-file-name="logstash-pro.yaml" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/efk/logstash-pro.yaml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="326">
-              <caret line="142" column="0" lean-forward="true" selection-start-line="142" selection-start-column="0" selection-end-line="142" selection-end-column="0" />
+            <state relative-caret-position="407">
+              <caret line="145" column="87" lean-forward="false" selection-start-line="145" selection-start-column="87" selection-end-line="145" selection-end-column="87" />
               <folding />
             </state>
           </provider>
@@ -100,18 +72,28 @@
       <file leaf-file-name="logstash-test.yaml" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/efk/logstash-test.yaml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="149" selection-end-column="1" />
+            <state relative-caret-position="2875">
+              <caret line="134" column="19" lean-forward="true" selection-start-line="134" selection-start-column="19" selection-end-line="134" selection-end-column="19" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="filebeat-daemonset-pro.yaml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/efk/filebeat-daemonset-pro.yaml">
+      <file leaf-file-name="delete_log.sh" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/filebeat-del-log/delete_log.sh">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="324">
-              <caret line="33" column="18" lean-forward="true" selection-start-line="33" selection-start-column="18" selection-end-line="33" selection-end-column="18" />
+            <state relative-caret-position="459">
+              <caret line="17" column="25" lean-forward="true" selection-start-line="17" selection-start-column="25" selection-end-line="17" selection-end-column="25" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="dockerfile" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/filebeat-del-log/dockerfile">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="270">
+              <caret line="10" column="0" lean-forward="false" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -122,6 +104,16 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="351">
               <caret line="20" column="9" lean-forward="true" selection-start-line="20" selection-start-column="9" selection-end-line="20" selection-end-column="9" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="kafka-shanghai" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/kafka/kafka-shanghai">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="108">
+              <caret line="4" column="0" lean-forward="false" selection-start-line="4" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -170,8 +162,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/redis/redis-node1/redis.conf" />
-        <option value="$PROJECT_DIR$/redis/redis-node3/redis.conf" />
         <option value="$PROJECT_DIR$/redis/redis-node2/redis.conf" />
         <option value="$PROJECT_DIR$/redis/redis-node4/redis.conf" />
         <option value="$PROJECT_DIR$/redis/redis-node5/redis.conf" />
@@ -204,8 +194,6 @@
         <option value="$PROJECT_DIR$/eureka/k8s-eureka-test.yml" />
         <option value="$PROJECT_DIR$/filebeat-del-log/deletelog.yaml" />
         <option value="$PROJECT_DIR$/filebeat-del-log/kafka-shanghai" />
-        <option value="$PROJECT_DIR$/filebeat-del-log/deletelog-pro.yaml" />
-        <option value="$PROJECT_DIR$/filebeat-del-log/deletelog-test.yaml" />
         <option value="$PROJECT_DIR$/rocketmq/rocketmq-acl.yaml" />
         <option value="$PROJECT_DIR$/ceph/rbd-privisioner-test/sc-wzqtest.yaml" />
         <option value="$PROJECT_DIR$/ceph/install-ceph-common.sh" />
@@ -219,8 +207,12 @@
         <option value="$PROJECT_DIR$/efk/filebeat-test.yaml" />
         <option value="$PROJECT_DIR$/efk/filebeat-pro.yaml" />
         <option value="$PROJECT_DIR$/efk/filebeat-daemonset-pro.yaml" />
-        <option value="$PROJECT_DIR$/efk/logstash-test.yaml" />
         <option value="$PROJECT_DIR$/efk/logstash-pro.yaml" />
+        <option value="$PROJECT_DIR$/efk/logstash-test.yaml" />
+        <option value="$PROJECT_DIR$/filebeat-del-log/delete_log.sh" />
+        <option value="$PROJECT_DIR$/filebeat-del-log/dockerfile" />
+        <option value="$PROJECT_DIR$/filebeat-del-log/deletelog-test.yaml" />
+        <option value="$PROJECT_DIR$/filebeat-del-log/deletelog-pro.yaml" />
       </list>
     </option>
   </component>
@@ -270,7 +262,58 @@
             <path>
               <item name="docker-file" type="b2602c69:ProjectViewProjectNode" />
               <item name="docker-file" type="462c0819:PsiDirectoryNode" />
+              <item name="ceph" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="docker-file" type="b2602c69:ProjectViewProjectNode" />
+              <item name="docker-file" type="462c0819:PsiDirectoryNode" />
+              <item name="ceph" type="462c0819:PsiDirectoryNode" />
+              <item name="rbd-privisioner-test" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="docker-file" type="b2602c69:ProjectViewProjectNode" />
+              <item name="docker-file" type="462c0819:PsiDirectoryNode" />
+              <item name="consul" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="docker-file" type="b2602c69:ProjectViewProjectNode" />
+              <item name="docker-file" type="462c0819:PsiDirectoryNode" />
+              <item name="efk" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="docker-file" type="b2602c69:ProjectViewProjectNode" />
+              <item name="docker-file" type="462c0819:PsiDirectoryNode" />
+              <item name="eureka" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="docker-file" type="b2602c69:ProjectViewProjectNode" />
+              <item name="docker-file" type="462c0819:PsiDirectoryNode" />
+              <item name="filebeat-del-log" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="docker-file" type="b2602c69:ProjectViewProjectNode" />
+              <item name="docker-file" type="462c0819:PsiDirectoryNode" />
+              <item name="kafka" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="docker-file" type="b2602c69:ProjectViewProjectNode" />
+              <item name="docker-file" type="462c0819:PsiDirectoryNode" />
               <item name="prometheus+grafana" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="docker-file" type="b2602c69:ProjectViewProjectNode" />
+              <item name="docker-file" type="462c0819:PsiDirectoryNode" />
+              <item name="redis" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="docker-file" type="b2602c69:ProjectViewProjectNode" />
+              <item name="docker-file" type="462c0819:PsiDirectoryNode" />
+              <item name="rocketmq" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="docker-file" type="b2602c69:ProjectViewProjectNode" />
+              <item name="docker-file" type="462c0819:PsiDirectoryNode" />
+              <item name="zipkinserver" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -291,11 +334,11 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\备份资料\项目工程\docker-file\filebeat-del-log" />
       <recent name="D:\备份资料\项目工程\docker-file\efk" />
       <recent name="D:\备份资料\项目工程\docker-file" />
       <recent name="D:\备份资料\项目工程\docker-file\consul" />
       <recent name="D:\备份资料\项目工程\docker-file\rocketmq" />
-      <recent name="D:\备份资料\项目工程\docker-file\filebeat-del-log" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="D:\备份资料\项目工程\docker-file\kafka" />
@@ -498,7 +541,7 @@
       <workItem from="1577676923710" duration="4187000" />
       <workItem from="1577929831586" duration="11120000" />
       <workItem from="1578275166253" duration="368000" />
-      <workItem from="1578290773424" duration="7327000" />
+      <workItem from="1578290773424" duration="14868000" />
     </task>
     <task id="LOCAL-00001" summary="完善consul">
       <created>1532051392312</created>
@@ -682,11 +725,18 @@
       <option name="project" value="LOCAL" />
       <updated>1578034619701</updated>
     </task>
-    <option name="localTasksCounter" value="27" />
+    <task id="LOCAL-00027" summary="增加efk">
+      <created>1578302178927</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1578302178928</updated>
+    </task>
+    <option name="localTasksCounter" value="28" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="234739000" />
+    <option name="totallyTimeSpent" value="242280000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -779,14 +829,14 @@
     <MESSAGE value="修改redis、mq 编排脚本" />
     <MESSAGE value="增加kafka  eureka" />
     <MESSAGE value="增加ceph接入paas" />
-    <option name="LAST_COMMIT_MESSAGE" value="增加ceph接入paas" />
+    <MESSAGE value="增加efk" />
+    <option name="LAST_COMMIT_MESSAGE" value="增加efk" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/zipkinserver/docker-compose.yml" />
     <entry file="file://$PROJECT_DIR$/zipkinserver/docker-zipkin-server">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="405">
@@ -823,45 +873,10 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/filebeat-del-log/start.sh" />
-    <entry file="file://$PROJECT_DIR$/filebeat-del-log/delete_log.sh">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="162">
-          <caret line="6" column="6" lean-forward="false" selection-start-line="6" selection-start-column="6" selection-end-line="6" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/filebeat-del-log/deletelog-pro.yaml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="378">
-          <caret line="28" column="19" lean-forward="false" selection-start-line="28" selection-start-column="19" selection-end-line="28" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/filebeat-del-log/deletelog-test.yaml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="470">
-          <caret line="28" column="19" lean-forward="false" selection-start-line="28" selection-start-column="19" selection-end-line="28" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/filebeat-del-log/dockerfile">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/rocketmq/rocketmq-acl.yaml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="108">
           <caret line="4" column="21" lean-forward="false" selection-start-line="4" selection-start-column="21" selection-end-line="4" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/kafka/kafka-shanghai">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="243">
-          <caret line="9" column="0" lean-forward="false" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
         </state>
       </provider>
     </entry>
@@ -876,39 +891,7 @@
     <entry file="file://$PROJECT_DIR$/ceph/test/pod.yaml" />
     <entry file="file://$PROJECT_DIR$/ceph/pvc/pvc-huafa-ceph-test2.yaml" />
     <entry file="file://$PROJECT_DIR$/ceph/pvc/pvc-huafa-test.yaml" />
-    <entry file="file://$PROJECT_DIR$/ceph/ceph-secret.yaml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/ceph/ceph-secret-kube.yaml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ceph/rbd-privisioner-test/rbd-privi-role.yaml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ceph/rbd-privisioner-test/ceph-secret-wzq.yaml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ceph/rbd-privisioner-test/deploy.yaml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -1007,30 +990,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/redis/dockerfile-single">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-189">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/redis/redis-trib.sh">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/redis/set-redis-pass.sh">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/rocketmq/set-jvm.sh">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="243">
@@ -1039,34 +998,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/redis/dockerfile-cluster">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="189">
-          <caret line="7" column="0" lean-forward="false" selection-start-line="7" selection-start-column="0" selection-end-line="8" selection-end-column="41" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/consul/dockerfile-consul">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="297">
           <caret line="11" column="29" lean-forward="true" selection-start-line="11" selection-start-column="29" selection-end-line="11" selection-end-column="29" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/consul/k8s-consul-pro.yaml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="216">
-          <caret line="22" column="32" lean-forward="true" selection-start-line="22" selection-start-column="32" selection-end-line="22" selection-end-column="32" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/consul/k8s-consul-test.yaml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="297">
-          <caret line="42" column="34" lean-forward="true" selection-start-line="0" selection-start-column="0" selection-end-line="110" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -1103,14 +1038,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/efk/filebeat-pro.yaml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="351">
-          <caret line="20" column="9" lean-forward="true" selection-start-line="20" selection-start-column="9" selection-end-line="20" selection-end-column="9" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/efk/filebeat-daemonset-pro.yaml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="324">
@@ -1119,26 +1046,162 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/consul/k8s-consul-pro.yaml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="216">
+          <caret line="22" column="32" lean-forward="true" selection-start-line="22" selection-start-column="32" selection-end-line="22" selection-end-column="32" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/consul/k8s-consul-test.yaml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="351">
+          <caret line="44" column="28" lean-forward="true" selection-start-line="44" selection-start-column="28" selection-end-line="44" selection-end-column="28" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/efk/filebeat-daemonset-test.yaml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="243">
+        <state relative-caret-position="-1942">
           <caret line="30" column="51" lean-forward="true" selection-start-line="30" selection-start-column="15" selection-end-line="30" selection-end-column="51" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/efk/logstash-test.yaml">
+    <entry file="file://$PROJECT_DIR$/ceph/ceph-secret.yaml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="149" selection-end-column="1" />
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ceph/rbd-privisioner-test/ceph-secret-wzq.yaml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ceph/rbd-privisioner-test/install-ceph-common.sh">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ceph/rbd-privisioner-test/rbd-privi-role.yaml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1753">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ceph/rbd-privisioner-test/deploy.yaml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-189">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/redis/redis-trib.sh">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/redis/set-redis-pass.sh">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="10" column="0" lean-forward="true" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/redis/dockerfile-single">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/redis/dockerfile-cluster">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="243">
+          <caret line="9" column="0" lean-forward="true" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/efk/logstash-pro.yaml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="326">
-          <caret line="142" column="0" lean-forward="true" selection-start-line="142" selection-start-column="0" selection-end-line="142" selection-end-column="0" />
+        <state relative-caret-position="407">
+          <caret line="145" column="87" lean-forward="false" selection-start-line="145" selection-start-column="87" selection-end-line="145" selection-end-column="87" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/efk/logstash-test.yaml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2875">
+          <caret line="134" column="19" lean-forward="true" selection-start-line="134" selection-start-column="19" selection-end-line="134" selection-end-column="19" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/filebeat-del-log/delete_log.sh">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="459">
+          <caret line="17" column="25" lean-forward="true" selection-start-line="17" selection-start-column="25" selection-end-line="17" selection-end-column="25" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/efk/filebeat-pro.yaml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="351">
+          <caret line="20" column="9" lean-forward="true" selection-start-line="20" selection-start-column="9" selection-end-line="20" selection-end-column="9" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/kafka/kafka-shanghai">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="108">
+          <caret line="4" column="0" lean-forward="false" selection-start-line="4" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/filebeat-del-log/dockerfile">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="10" column="0" lean-forward="false" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/filebeat-del-log/deletelog-pro.yaml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="297">
+          <caret line="25" column="20" lean-forward="true" selection-start-line="25" selection-start-column="20" selection-end-line="25" selection-end-column="20" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/filebeat-del-log/deletelog-test.yaml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="189">
+          <caret line="21" column="15" lean-forward="true" selection-start-line="21" selection-start-column="15" selection-end-line="21" selection-end-column="51" />
           <folding />
         </state>
       </provider>

@@ -5,6 +5,9 @@ RUN mkdir  -p /var/applog
 
 #WORKDIR /var/applog
 
+#设置时区
+COPY shanghai.timezone  /etc/localtime
+RUN  echo 'Asia/Shanghai' >/etc/timezone
 
 ENV  LOG_RETAIN_DAYS 3
 
