@@ -1,8 +1,5 @@
-FROM 172.16.44.49/public/redis:5.0
+FROM 172.16.44.49/public/nginx:1.17
 MAINTAINER wuzuquan
-RUN mkdir  -p /redis/data
-VOLUME /redis/data
-WORKDIR /redis/data
 
 #设置时区
 COPY shanghai.timezone  /etc/localtime 
@@ -10,15 +7,13 @@ RUN  echo 'Asia/Shanghai' >/etc/timezone
 
 ENV  REDISPASSWORD  default
 ENV  MAXMEM  500MB
-COPY redis.conf /redis.conf
 
-COPY set-redis-pass.sh /docker-entrypoint.sh
+
+COPY set.sh /docker-entrypoint.sh
 RUN chmod +x /docker-entrypoint.sh
 
 ENTRYPOINT ["/docker-entrypoint.sh"]
+CMD ["nginx -g 'daemon off;'"]
 
-CMD [ "redis-server", "/redis.conf" ]
-
-EXPOSE 6000
-EXPOSE 16000
+EXPOSE 80
 

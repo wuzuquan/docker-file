@@ -1,4 +1,4 @@
-FROM 172.16.44.49/wuzuquan/redis:5.0-offical
+FROM 172.16.44.49/public/redis:5.0
 MAINTAINER wuzuquan
 RUN mkdir  -p /redis/data
 VOLUME /redis/data

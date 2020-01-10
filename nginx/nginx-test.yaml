@@ -1,0 +1,161 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{APP_NAME}}-nginx-conf
+data:
+  nginx.conf: |
+     user root;
+     worker_processes  auto;
+     events {
+       worker_connections  4024;
+     }
+     http {
+        include       mime.types;
+        charset utf-8;
+        default_type  application/octet-stream;
+        log_format  main  '$remote_addr - $remote_user [$time_local] "$request" '
+                      '$status $body_bytes_sent "$http_referer" '
+                      '"$http_user_agent" "$http_x_forwarded_for"';
+        #access_log  logs/access.log  main;
+        #    access_log  logs/access_$year-$month-$date.log  main;
+        sendfile        on;
+        #tcp_nopush     on;
+        keepalive_timeout  3001;
+        keepalive_requests 1000;
+        gzip  on;
+        server {
+            listen       80;
+           # listen 80 default_server reuseport backlog=10048;
+           #  server_name  172.16.*;
+          #  limit_conn perip 2;
+           location / {
+           alias /file/;
+           autoindex on;
+           autoindex_exact_size off;
+           autoindex_localtime on;
+         }
+
+         }
+      }
+
+
+
+---
+
+kind: StatefulSet
+apiVersion: apps/v1
+metadata:
+  name: {{APP_NAME}}
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      dce.daocloud.io/component: {{APP_NAME}}
+  template:
+    metadata:
+      name: {{APP_NAME}}
+      labels:
+        dce.daocloud.io/app: {{APP_NAME}}
+        dce.daocloud.io/component: {{APP_NAME}}
+
+    spec:
+      containers:
+        - name: node
+          image: '172.16.44.49/public/nginx:1.17-shanghai'
+          volumeMounts:
+              - name: file
+                mountPath: /file/
+              - name: nginx-conf
+                mountPath: /etc/nginx/nginx.conf
+                subPath: nginx.conf
+          resources:
+            limits:
+              cpu: 2
+              memory: 2Gi
+            requests:
+              cpu: 2
+              memory: 2Gi
+          livenessProbe:
+            tcpSocket:
+              port: 80
+            initialDelaySeconds: 10
+            timeoutSeconds: 1
+            periodSeconds: 3
+            successThreshold: 1
+            failureThreshold: 3
+          readinessProbe:
+            tcpSocket:
+              port: 80
+            initialDelaySeconds: 10
+            timeoutSeconds: 1
+            periodSeconds: 3
+            successThreshold: 1
+            failureThreshold: 3
+          imagePullPolicy: Always
+          tty: true
+      volumes:
+          - name: file
+            hostPath:
+               path: /var/file
+          - name: nginx-conf
+            configMap:
+              name: {{APP_NAME}}-nginx-conf
+              items:
+              - key: nginx.conf
+                path: nginx.conf
+      affinity:
+            nodeAffinity:
+                requiredDuringSchedulingIgnoredDuringExecution:
+                  nodeSelectorTerms:
+                    - matchExpressions:
+                        - key: kubernetes.io/hostname
+                          operator: In
+                          values:
+                            - compute-4
+  podManagementPolicy: OrderedReady
+  serviceName: {{APP_NAME}}
+  updateStrategy:
+    type: RollingUpdate
+    rollingUpdate:
+      partition: 0
+  revisionHistoryLimit: 3
+---
+
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{APP_NAME}}-service
+  labels:
+    dce.daocloud.io/app: {{APP_NAME}}
+spec:
+  ports:
+    - name: servicename
+      protocol: TCP
+      port: 80
+      targetPort: 80
+  selector:
+    dce.daocloud.io/component: {{APP_NAME}}
+  type: ClusterIP
+  clusterIP: None
+  sessionAffinity: None
+
+
+---
+kind: Ingress
+apiVersion: extensions/v1beta1
+metadata:
+  name: {{APP_NAME}}-service2
+  labels:
+    dce.daocloud.io/app: {{APP_NAME}}
+  annotations:
+    nginx.ingress.kubernetes.io/use-port-in-redirects: 'true'
+spec:
+  rules:
+    - host: file.paasdev.huafagroup.com
+      http:
+        paths:
+          - path: /
+            backend:
+              serviceName: nginx-service
+              servicePort: 80
