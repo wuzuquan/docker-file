@@ -50,9 +50,12 @@ spec:
           tty: true
 
         - name: redis-exporter
-          image: 172.16.44.49/public/redis-exporter:5.0
+          image: 172.16.43.34/public/redis-exporter:5.0
           resources:
             requests:
+              cpu: 100m
+              memory: 100Mi
+            limits:
               cpu: 100m
               memory: 100Mi
           env:

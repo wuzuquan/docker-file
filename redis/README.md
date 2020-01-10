@@ -1,11 +1,7 @@
 使用说明
-------
-author：wuzuquan
-类型：statefulset  有状态服务，半自动化集群构建
+author：wuzuquan 类型：statefulset 有状态服务，半自动化集群构建
 
-
-
-数据持久化到nfs
+数据持久化到rbd
 
 采用storageclass动态卷
 
@@ -23,8 +19,5 @@ author：wuzuquan
 
 *4、进入任意一个pod命令行，执行如下命令即可构建集群
 
-redis-cli --cluster create 172.16.28.110:6000 172.16.28.110:6000 172.16.28.110:6000 172.16.28.111:6000 172.16.28.111:6000 172.16.28.111:6000 --cluster-replicas 1
-
-
-
-
+redis-cli --cluster create 172.16.28.110:6000 172.16.28.110:6000 172.16.28.110:6000
+ 172.16.28.111:6000 172.16.28.111:6000 172.16.28.111:6000 --cluster-replicas 1
