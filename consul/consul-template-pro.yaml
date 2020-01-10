@@ -1,0 +1,249 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: host-ctmpl
+data:
+  host.ctmpl: |
+    {$ range tree "prometheus/host" $}
+    {$ with $d := .Value|parseJSON $}
+    - labels:
+        desc: {$ $d.labels.desc $}
+        group: {$ $d.labels.group $}
+        cluster: {$ $d.labels.cluster $}
+        host: {$ $d.labels.host $}
+        instance: {$ $d.labels.instance $}
+      targets:
+        - {$ $d.targets $}
+    {$ end $}
+    {$ end $}
+
+---
+
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: mysql-ctmpl
+data:
+  mysql.ctmpl: |
+    {$ range tree "prometheus/mysql" $}
+    {$ with $d := .Value|parseJSON $}
+    - labels:
+        desc: {$ $d.labels.desc $}
+        group: {$ $d.labels.group $}
+        cluster: {$ $d.labels.cluster $}
+        host: {$ $d.labels.host $}
+        instance: {$ $d.labels.instance $}
+      targets:
+        - {$ $d.targets $}
+    {$ end $}
+    {$ end $}
+
+
+---
+
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: mongodb-ctmpl
+data:
+  mongodb.ctmpl: |
+    {$ range tree "prometheus/mongodb" $}
+    {$ with $d := .Value|parseJSON $}
+    - labels:
+        desc: {$ $d.labels.desc $}
+        group: {$ $d.labels.group $}
+        cluster: {$ $d.labels.cluster $}
+        host: {$ $d.labels.host $}
+        instance: {$ $d.labels.instance $}
+      targets:
+        - {$ $d.targets $}
+    {$ end $}
+    {$ end $}
+
+---
+
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: ceph-ctmpl
+data:
+  ceph.ctmpl: |
+    {$ range tree "prometheus/ceph" $}
+    {$ with $d := .Value|parseJSON $}
+    - labels:
+        desc: {$ $d.labels.desc $}
+        group: {$ $d.labels.group $}
+        cluster: {$ $d.labels.cluster $}
+        host: {$ $d.labels.host $}
+        instance: {$ $d.labels.instance $}
+      targets:
+        - {$ $d.targets $}
+    {$ end $}
+    {$ end $}
+
+
+---
+
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: consul-template-conf
+data:
+  consul-template.conf: |
+    log_level = "warn"
+    syslog {
+    enabled = false
+    }
+    consul {
+    retry {
+    enabled = true
+    attempts = 12
+    backoff = "10s"
+    max_backoff = "10s"
+    }
+    }
+
+    template {
+    source = "/etc/consul_templates_mysql/ctmpl/mysql.ctmpl"
+    destination = "/etc/prometheus/config_out/file.sd.configs/mysql.yml"
+    backup = true
+    left_delimiter = "{$"
+    right_delimiter = "$}"
+    wait {
+    min = "1s"
+    max = "2s"
+    }
+    }
+
+    template {
+    source = "/etc/consul_templates_mongodb/ctmpl/mongodb.ctmpl"
+    destination = "/etc/prometheus/config_out/file.sd.configs/mongodb.yml"
+    backup = true
+    left_delimiter = "{$"
+    right_delimiter = "$}"
+    wait {
+    min = "1s"
+    max = "2s"
+    }
+    }
+
+    template {
+    source = "/etc/consul_templates_host/ctmpl/host.ctmpl"
+    destination = "/etc/prometheus/config_out/file.sd.configs/host.yml"
+    backup = true
+    left_delimiter = "{$"
+    right_delimiter = "$}"
+    wait {
+    min = "1s"
+    max = "2s"
+    }
+    }
+
+    template {
+    source = "/etc/consul_templates_ceph/ctmpl/ceph.ctmpl"
+    destination = "/etc/prometheus/config_out/file.sd.configs/ceph.yml"
+    backup = true
+    left_delimiter = "{$"
+    right_delimiter = "$}"
+    wait {
+    min = "1s"
+    max = "2s"
+    }
+    }
+---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: consul-template
+    provider: qidonglong
+    dce.daocloud.io/app: consul-template
+    dce.daocloud.io/component: consul-template
+  name: consul-template
+  namespace: monitoring
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      dce.daocloud.io/app: consul-template
+  template:
+    metadata:
+      annotations:
+        cluster_name: consul-template
+      labels:
+        dce.daocloud.io/app: consul-template
+        dce.daocloud.io/component: consul-template
+    spec:
+      containers:
+      - env:
+        - name: CONSUL_ADDR
+          value: "{{ CONSUL_ADDR }}"
+        image: "172.16.43.34/public/consul-template:1.15"
+        imagePullPolicy: IfNotPresent
+        volumeMounts:
+          - name: ceph-ctmpl
+            mountPath: /etc/consul_templates_ceph/ctmpl
+          - name: host-ctmpl
+            mountPath: /etc/consul_templates_host/ctmpl
+          - name: mysql-ctmpl
+            mountPath: /etc/consul_templates_mysql/ctmpl
+          - name: mongodb-ctmpl
+            mountPath: /etc/consul_templates_mongodb/ctmpl
+          - name: consul-dest-config
+            mountPath: /etc/prometheus/config_out/file.sd.configs
+          - name: consul-template-config
+            mountPath: /etc/consul_config  
+        name: consul-templates-node
+        args: ['-config=/etc/consul_config/consul-template.conf -max-stale=10s']
+        resources: 
+          limits:
+            cpu: '200m'
+            memory: '512Mi'
+          requests:
+            cpu: '200m'
+            memory: '512Mi'
+      tolerations:
+      - effect: NoExecute
+        operator: Exists
+      - effect: NoSchedule
+        operator: Exists
+      - key: CriticalAddonsOnly
+        operator: Exists      
+      volumes:
+        - name: host-ctmpl
+          configMap:
+           name: host-ctmpl     
+           items:
+            - key: host.ctmpl
+              path: host.ctmpl
+        - name: mysql-ctmpl
+          configMap:
+           name: mysql-ctmpl     
+           items:
+            - key: mysql.ctmpl
+              path: mysql.ctmpl
+        - name: mongodb-ctmpl
+          configMap:
+           name: mongodb-ctmpl     
+           items:
+            - key: mongodb.ctmpl
+              path: mongodb.ctmpl
+        - name: ceph-ctmpl
+          configMap:
+           name: ceph-ctmpl     
+           items:
+            - key: ceph.ctmpl
+              path: ceph.ctmpl
+        - name: consul-dest-config
+          hostPath:
+            path: /monitoring/prometheus/config/file.sd.configs
+        - name: consul-template-config
+          configMap:
+           name: consul-template-conf  
+           items:
+            - key: consul-template.conf
+              path: consul-template.conf
+      nodeSelector:
+        kubernetes.io/os: linux
+        monitor: monitor
